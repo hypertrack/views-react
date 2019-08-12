@@ -1,0 +1,31 @@
+@import './../../../theme/movement.scss';
+.errorMessage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p:first-of-type {
+    @include setFont(s);
+    margin: setSpace(2);
+    color: setColor(warning, base);
+  }
+  p:last-of-type {
+    @include setFont(xs);
+    margin: 0;
+    color: setColor(grey, dark);
+    width: 357px;
+    text-align: center;
+    a {
+      color: setColor(link, base)
+    }
+  }
+
+  & > img {
+    width: 30%;
+    margin: 0;
+    @media screen and (max-width: 500px) {
+      width: 90%;
+    }
+  }
+}

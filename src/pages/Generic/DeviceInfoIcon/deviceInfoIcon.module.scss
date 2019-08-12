@@ -1,0 +1,26 @@
+@import '../../../theme/movement.scss';
+
+.deviceInfoIcon {
+  // padding: setSpace(0) setSpace(2) setSpace(0) setSpace(2);
+  opacity: 0.7;
+  img {
+    height: setSpace(4.5);
+    border-radius: 50%;
+    box-shadow: 0px 0px setSpace(1) 0px setColor(grey, dark);
+    transition: 0.4s all ease-in-out;
+    vertical-align: text-top;
+    &:hover {
+      box-shadow: 0px 0px setSpace(4) 0px setColor(grey, dark);
+      cursor: pointer;
+    }
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &.openDeviceInfo {
+    img {
+      background-color:  setColor(warning, light);
+      padding: 2px;
+    }
+  }
+}

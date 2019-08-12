@@ -1,0 +1,92 @@
+@import './../../../theme/movement.scss';
+
+.deviceInfoContainer {
+  padding: $space--double;
+  position: relative;
+  overflow: hidden;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space--double;
+
+  .removeDevice {
+    color: setColor(warning);
+    border-radius: 4px;
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+}
+
+.miniHeader {
+  @include setFont(n, bold);
+  color: setColor(black);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 $space--double 0 0;
+}
+
+.deviceInfoField {
+  width: 50%;
+  float: left;
+  padding-bottom: $space--double;
+  .label {
+    @include setFont(xs, light);
+    color: setColor(grey, dark);
+    padding-bottom: $space--half;
+    &.accomodateIcon {
+      width: 90%;
+      float: left;
+      font-weight: 400;
+    }
+  }
+  .value {
+    @include setFont(xs);
+    color: setColor(black);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    max-width: 85%;
+    &.accomodateIcon {
+      width: 90%;
+      float: left;
+    }
+    &:hover {
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+  }
+  &.fullwidth {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.copyIcon {
+  float: right;
+  position: relative;
+  line-height: setSpace(6);
+  height: $space--double;
+  opacity: 0.5;
+  transition: 0.4s all ease-in-out;
+  cursor: pointer;
+  img {
+    display: inline;
+    vertical-align: middle;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.error {
+  text-align: center;
+  @include setFont(xs);
+  color: setColor(warning);
+}

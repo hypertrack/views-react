@@ -1,0 +1,25 @@
+{
+  "appsync": {
+    "apiKey": "da2-rif7t6g4pjfwbixvrjsmmjm6na",
+    "authenticationType": "API_KEY",
+    "graphqlEndpoint": "https://ddmiqhrz75hd3hshzoae7c6xvy.appsync-api.us-west-2.amazonaws.com/graphql",
+    "region": "us-west-2"
+  },
+  "auth": {
+    "isDev": false,
+    "region": "us-west-2",
+    "userPoolId": "us-west-2_nFipuQmtf",
+    "userPoolWebClientId": "61qt32b45r33luhkkbktn5q1a1"
+  },
+  "fqdns": {
+    "dashboard": "localhost.localdomain",
+    "embed": "localhost.localdomain",
+    "track": "localhost.localdomain"
+  },
+  "stripe": {
+    "pk": "pk_test_m87BiUVzEyYP9IgBmjcY7Mei"
+  },
+  "baseURL": "https://devpoc-api.htdev.hypertrack.com",
+  "buildCommit": "deadbeef",
+  "sentryDSN": "https://c11be186d2ed4676ae42940e7bd7e0d2@sentry.htdev.hypertrack.com/23"
+}

@@ -1,0 +1,77 @@
+@import './../../../../theme/movement.scss';
+
+.filterContainer {
+  position: relative;
+  width: 25%;
+  font-size: 1rem;
+  color: setColor(grey, dark);
+  align-items: center;
+  z-index: 13;
+  border: 1px solid setColor(grey, base);
+  border-radius: 0 setSpace(0) setSpace(0) 0;
+  transition: 0.2s all ease-in-out;
+
+  &.isOpen {
+    border-radius: 0 0 0 0;
+    box-shadow: 0 setSpace(3) setSpace(3) 0 setColor(grey, dark);
+    border-left: none;
+  }
+
+  .filterIcon {
+    position: relative;
+    vertical-align: sub;
+    filter: drop-shadow(1px 1px 1px #333);
+    // opacity: 0.7;
+  }
+
+
+  .buttonContainer {
+    position: relative;
+    display:inline-flex;
+    position: relative;
+    padding: .5rem .5rem .5rem 0rem;
+    // border: 1px solid setColor(grey, base);
+
+    &:hover {
+        opacity: 1;
+    }
+  }
+
+  .filterDropDownContainer {
+    position: absolute;
+    flex-direction: column;
+    background-color: white;
+    // left: -1px;
+    width: calc(100% + 1px);
+    box-shadow: 0 setSpace(3) setSpace(3) 0 setColor(grey, dark);
+    // border: 1px solid setColor(grey, base);
+    border-radius: 0px 0px setSpace(4) setSpace(4);
+    overflow: hidden;
+    z-index: 14;
+    .dropdownItem {
+      padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+      border-bottom: 1px solid setColor(grey, base);
+      opacity: .7;
+      &:last-of-type {
+        padding: 0.5rem;
+        text-align: center;
+        color: setColor(warning, base);
+        opacity: .7;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    img {
+      &:first-of-type {
+        opacity: 1;
+      }
+    }
+  }
+}

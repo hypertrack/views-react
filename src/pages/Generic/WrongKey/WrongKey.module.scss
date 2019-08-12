@@ -1,0 +1,139 @@
+@import './../../../theme/movement.scss';
+
+.emptyListCardContainer {
+  max-width: 500px;
+  position: relative;
+  margin: setSpace(20) auto;
+  overflow: hidden;
+  @media screen and (max-width: 500px) {
+    margin: setSpace(24) 0;
+    .emptyListInner {
+      width: 100%;
+      padding: setSpace(4);
+    }
+  }
+}
+
+.emptyListInner {
+  padding: $space--double;
+}
+
+.emptyVector {
+  width: 100%;
+}
+
+.errorContainer {
+  max-width: 500px;
+  position: relative;
+  margin: setSpace(30) auto;
+  overflow: hidden;
+  @media screen and (max-width: 500px) {
+    margin: setSpace(10) 0;
+    .emptyListInner {
+      width: 100%;
+      padding: setSpace(4);
+    }
+  }
+  .errorContainerTitle {
+    @include setFont(m);
+    color: setColor(warning);
+    text-align: center;
+    position: relative;
+  }
+  .errorContainerSubtitle {
+    @include setFont(n, light);
+    color: setColor(grey, dark);
+    text-align: center;
+    position: relative;
+    padding: setSpace(1) setSpace(12);
+  }
+  .errorContainerButton {
+    @include button--small(white, setColor(black), setColor(black));
+    width: 100px;
+    margin: setSpace(4) auto;
+    text-align: center;
+    display: block;
+    img {
+      display: inline-block;
+      height: setSpace(4);
+      vertical-align: middle;
+      padding-right: setSpace(1);
+    }
+  }
+  .errorContainerGraphic {
+    max-width: 100%;
+    text-align: center;
+    padding-top: setSpace(4);
+    position: relative;
+    img {
+      display: inline;
+      max-width: 100%;
+    }
+  }
+}
+
+.mainMessage {
+  @include setFont(m, bold);
+  text-align: center;
+  color: setColor(black);
+  display: block;
+}
+.supportMessage {
+  @include setFont(n, light);
+  color: setColor(grey, dark);
+  display: block;
+  text-align: center;
+  padding: setSpace(1) setSpace(12);
+  @media screen and (max-width: 500px) {
+    padding: setSpace(2) setSpace(10);
+  }
+}
+.ctaLabel {
+  @include setFont(n);
+  color: setColor(black);
+  display: block;
+  text-align: center;
+  margin-top: setSpace(6);
+}
+
+.ctaGroup {
+  display: flex;
+  margin: setSpace(6) auto;
+  justify-content: center;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  }
+}
+
+.ctaItem {
+  border: 1px solid setColor(grey);
+  @include setFont(s);
+  border-radius: 4px;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  padding: setSpace(3);
+  width: 139px;
+  margin: $space--double $space--double $space--double 0;
+  cursor: pointer;
+  line-height: setSpace(6);
+  transition: 0.4s all ease-in-out;
+  img {
+    vertical-align: middle;
+    display: inline;
+    line-height: setSpace(6);
+    padding-right: setSpace(1);
+  }
+  &:hover {
+    // background: setColor(grey, light );
+    // border: 1px solid setColor(grey, base);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  @media screen and (max-width: 500px) {
+    margin: 0 0 setSpace(2) 0;
+    width: 100%;
+  }
+}

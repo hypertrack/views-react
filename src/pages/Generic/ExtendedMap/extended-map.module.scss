@@ -1,0 +1,49 @@
+@import '../../../theme/movement.scss';
+
+.liveLocation {
+  &.container {
+    // height: calc(calc(var(--vh, 1vh) * 100) - #{$navbar-height});
+    position: relative;
+    height: calc(calc(var(--vh, 1vh) * 100));
+    width: 100vw;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 206, 91, 0.4);
+    background-color: rgba(0, 206, 91, 0.4);
+  }
+  25% {
+    box-shadow: 0 0 0 2.5px rgba(0, 206, 91, 0.25);
+    background-color: rgba(0, 206, 91, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(0, 206, 91, 0.2);
+    background-color: rgba(0, 206, 91, 0.2);
+  }
+  75% {
+    box-shadow: 0 0 0 6px rgba(0, 206, 91, 0.1);
+    background-color: rgba(0, 206, 91, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 7.5px rgba(0, 206, 91, 0);
+    background-color: rgba(0, 206, 91, 0);
+  }
+}
+
+.mapMarker {
+  outline: none;
+  transition: 0.5s all ease-in-out;
+  animation: none;
+  border-radius: 50%;
+  &.paused {
+    animation: none !important;
+    background-color: transparent !important;
+    transform: translateY(-$space--double);
+  }
+  &.startAnimation {
+    background-color: rgba(0, 206, 91, 0.2);
+    animation: pulse 1s ease-out infinite;
+  }
+}

@@ -1,0 +1,34 @@
+@import 'src/theme/movement';
+
+.container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.mapContainer {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  height: calc(100vh - #{$navbar-height});
+  &.isWidget {
+    height: 100vh;
+  }
+}
+
+
+.error {
+  text-align: center;
+  @include setFont(xs);
+  color: setColor(warning);
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

@@ -1,0 +1,38 @@
+// Greys and blacks
+$grey--lighter :          #F7F7F7;
+$grey :                   #EAEAEA;
+$grey--darker :           #858585;
+
+$dark :                   #1a142f;
+$black :                  #141414;
+$black--darker :          #282828;
+
+// Accent colors
+$red--lighter:            #E62555;
+$red:                     #EA023E;
+$red--darker:             #96072D;
+
+$yellow--lighter:         #FFA430;
+$yellow:                  #f5a623;
+$yellow--darker:          #B26B19;
+
+$hyper-green-lighter:     #33E96B;
+$hyper-green:             #07BA3A;
+$hyper-green--darker:     #1C7D39;
+
+$blue:                    #4a90e2;
+
+
+// Font families
+$sans-serif:                'Fira Sans', sans-serif;
+$monospace:                 'Fira Mono', monospace;
+$shadow:                  rgba(0, 0, 0, 0.07);
+$maxWidth:                  1280px;
+$base-font-size:            16px;
+
+
+// Navbar
+$navbar-height:             4.125rem;
+
+// Timing functions
+$quadratic:                 cubic-bezier(0.47, 0, 0.745, 0.715);
