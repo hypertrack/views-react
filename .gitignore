@@ -11,6 +11,10 @@
 # production
 index.js
 
+# sample app
+/sample/node_modules
+/sample/yarn.lock
+
 # misc
 /.idea
 .idea

@@ -1,6 +1,6 @@
 {
   "name": "hypertrack-views-react",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": false,
   "license": "MIT",
   "main": "index.js",
@@ -35,12 +35,12 @@
     "lottie-web": "^5.5.5",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
+    "react": "^16.8.2",
     "react-animate-height": "^2.0.15",
     "react-apollo": "^2.5.8",
     "react-day-picker": "^7.3.0",
     "react-detect-offline": "^2.3.0",
-    "react-dom": "^16.9.0",
+    "react-dom": "^16.8.2",
     "react-if": "^3.4.0",
     "react-loadable": "^5.5.0"
   },

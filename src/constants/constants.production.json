@@ -5,21 +5,11 @@
     "graphqlEndpoint": "https://7kcobbjpavdyhcxfvxrnktobjm.appsync-api.us-west-2.amazonaws.com/graphql",
     "region": "us-west-2"
   },
-  "auth": {
-    "isDev": false,
-    "region": "us-west-2",
-    "userPoolId": "us-west-2_HMxGvgUyF",
-    "userPoolWebClientId": "629t30pf4k5k60frb4g2ndr3uj"
-  },
   "fqdns": {
     "dashboard": "localhost.localdomain",
     "embed": "localhost.localdomain",
     "track": "localhost.localdomain"
   },
-  "stripe": {
-    "pk": "pk_live_xpZiXa2h2wLdn97fWBTRHkum"
-  },
   "baseURL": "https://live-api.htprod.hypertrack.com",
-  "buildCommit": "deadbeef",
-  "sentryDSN": "https://c11be186d2ed4676ae42940e7bd7e0d2@sentry.htdev.hypertrack.com/23"
+  "buildCommit": "deadbeef"
 }

@@ -44,15 +44,6 @@ $colors: (
   @return (0.25rem * $factor);
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  font-size: $base-font-size;
-  margin: 0;
-}
-
 div[tabindex^='-1'] {
   height: 100%;
 }
@@ -61,9 +52,9 @@ div[tabindex^='-1'] {
   box-sizing: border-box;
 }
 
-@mixin height-vh($val: 100) {
-  height: calc(var(--vh, 1vh) * #{$val});
-}
+// @mixin height-vh($val: 100) {
+//   height: calc(var(--vh, 1vh) * #{$val});
+// }
 
 $font-sizes: (
   l: 2rem,

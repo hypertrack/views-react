@@ -11,6 +11,10 @@ const Icon = props => {
       onClick={props.onClick}
       height={props.height}
       src={`${props.assetsurl || CONSTANTS.assetsUrl}${props.variant}.svg`}
+      onError={e => {
+        e.target.onerror = null
+        e.target.src = `${CONSTANTS.assetsUrl}${props.variant}.svg`
+      }}
       alt={props.variant}
       id={props.id}
       className={props.className || ''}
@@ -52,7 +56,7 @@ Icon.propTypes = {
     'custom',
     'default-card',
     'default-layer',
-    'device-disconnected',
+    'disconnected',
     'diners-club',
     'discover',
     'docs',

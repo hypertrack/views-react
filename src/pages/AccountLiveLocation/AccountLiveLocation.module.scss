@@ -7,16 +7,13 @@
 }
 
 .mapContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
   display: flex;
-  position: relative;
   align-items: center;
   justify-content: center;
-  width: 100%;
   z-index: 1;
-  height: calc(100vh - #{$navbar-height});
-  &.isWidget {
-    height: 100vh;
-  }
 }
 
 

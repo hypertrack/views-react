@@ -23,10 +23,10 @@ const activityIcon = (connectionStatus, locationProps, loading, assetsUrl) => {
     ) {
       variant = 'paused'
     } else {
-      variant = 'device-disconnected'
+      variant = 'disconnected'
     }
   } else {
-    variant = 'device-disconnected'
+    variant = 'disconnected'
   }
   return (
     <div

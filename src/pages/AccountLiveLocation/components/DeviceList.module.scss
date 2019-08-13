@@ -46,9 +46,9 @@
   &.container {
     position: relative;
     z-index: 1;
-    @media screen and (max-width: 500px) {
-      @include height-vh();
-    }
+    // @media screen and (max-width: 500px) {
+    //   @include height-vh();
+    // }
   }
 }
 
@@ -68,7 +68,7 @@
   overflow-y: scroll;
   border-radius: 4px;
   @media screen and (min-width: 501px) {
-    height: 80vh;
+    height: 80%;
   }
   @media screen and (max-width: 500px) {
     width: 100%;

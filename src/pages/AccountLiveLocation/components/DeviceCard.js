@@ -22,7 +22,7 @@ const DeviceCard = ({
         : 'unknown'
   } else if (device.device_status === CONSTANTS.movementStatus.inactive)
     variant = 'paused'
-  else variant = 'device-disconnected'
+  else variant = 'disconnected'
   return (
     <div
       className={styles.deviceItemContainer}

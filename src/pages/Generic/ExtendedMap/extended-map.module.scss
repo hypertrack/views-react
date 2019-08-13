@@ -2,10 +2,9 @@
 
 .liveLocation {
   &.container {
-    // height: calc(calc(var(--vh, 1vh) * 100) - #{$navbar-height});
-    position: relative;
-    height: calc(calc(var(--vh, 1vh) * 100));
-    width: 100vw;
+    position: absolute;
+    height: 100%;
+    width: 100%;
   }
 }
 
