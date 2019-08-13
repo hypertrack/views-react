@@ -79,4 +79,4 @@ We use [Semantic Versioning](http://semver.org/). For the versions available, se
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
