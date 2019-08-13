@@ -32,9 +32,9 @@ const PUBLISHABLE_KEY = "<your_key>";
   publishableKey={PUBLISHABLE_KEY}
   isTooltipsShown={false}
   isDeviceListShown={false}
-  selectedDeviceId={null}
+  selectedDeviceId={"00112233-4455-6677-8899-AABBCCDDEEFF"}
   defaultLayer={"street"}
-  customLayer={"Optional prop for changing map tiles here"}
+  customLayer={"https://api.maptiler.com/tiles/hillshades/{z}/{x}/{y}.png"}
   assetsUrl={"https://abc-sdk-test-assets.s3-us-west-2.amazonaws.com/"}
 />;
 ```
@@ -45,13 +45,27 @@ const PUBLISHABLE_KEY = "<your_key>";
 | ----------------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | publishableKey    | string  | N/A     | The publishable key of your account from the [Setup page on the Dashboard](https://dashboard.hypertrack.com/setup)                                                                                                                                       |
 | isTooltipsShown   | boolean | `false` | Show the device ID right next to the location marker of a device                                                                                                                                                                                         |
-| isDeviceListShown | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will put the device in focus (zoom)                                                                                                                        |
-| selectedDeviceId  | string  | `null`  | ID of the device to be displayed. Adding this will change the view to a single device mode (including device data, activity, and more)                                                                                                                   |
+| isDeviceListShown | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location                                                                                                                     |
+| selectedDeviceId  | string  | `null`  | ID of the device to be displayed (case sensistive). Can be obtained using the [Device API](https://docs.hypertrack.com/#api-devices). Adding this will change the view to a single device mode (including device data, activity, and more)               |
 | defaultLayer      | string  | `base`  | Can be either one of: [`base`](https://cloud.maptiler.com/maps/voyager/), [`street`](https://cloud.maptiler.com/maps/streets/), [`satellite`](https://cloud.maptiler.com/maps/hybrid/), or `custom`. Custom will only work if a customLayer is provided. |
-| customLayer       | string  | `null`  | Leaflet-compatible [tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map) (only raster is supported). Needs to be public accessible.                                                                                                               |
+| customLayer       | string  | `null`  | URL to a Leaflet-compatible [tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map) in XYZ format. Only raster is supported and it needs to be public accessible.                                                                                   |
 | assetsUrl         | string  | `null`  | URL to a public asset folder containig SVG files to replace default icons. The filenames need to match exactly. Missing files will default to the default                                                                                                |
 
 > Note: The component passes along all additional properties, so you can use properties like `className`.
+
+#### Showing a single device
+
+When provided with the `selectedDeviceId` property, the component will render a single device view as opposed to the device overview. You can find more details in the [Live device view documentation](https://docs.hypertrack.com/#live-device-view).
+
+![live device view](public/sample-single-device.png "Live Device View")
+
+#### Adding a custom map layer
+
+With the `customLayer` property, you can reference a raster tile to be added as a custom map layer. Users can select the custom view from the ![map-layer-icon](public/map-layer.png "map layer icon") button on the top right side of the view. The layer is pre-selected based on the `defaultLayer` property. After setting the `customLayer`, you can set the `defaultLayer` property to `custom` to render this new tile by default.
+
+There are different ways to obtain and/or generate a custom layer. [OpenMapTiles](https://openmaptiles.org/) might be of interest. You can also generate/customize [MapBox maps and access them as raster tiles](https://docs.mapbox.com/api/maps/#raster-tiles).
+
+> Note: Please ensure you use the XYZ URL format, which looks something like this: `/tile-name/{z}/{x}/{y}.png`
 
 #### Replacing default icons
 
