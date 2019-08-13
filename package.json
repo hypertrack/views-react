@@ -1,6 +1,6 @@
 {
   "name": "hypertrack-views-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "license": "MIT",
   "main": "index.js",
@@ -48,6 +48,7 @@
     "analyze": "source-map-explorer build/static/*.js",
     "start": "NODE_ENV=developmentsdk react-scripts start",
     "build": "rollup -c --environment INCLUDE_DEPS,BUILD:production",
+    "release": "release-it",
     "test": "react-scripts test --verbose=true",
     "eject": "react-scripts eject"
   },
@@ -75,6 +76,7 @@
     "postcss-nested": "^4.1.2",
     "postcss-simple-vars": "^5.0.2",
     "react-scripts": "^3.0.1",
+    "release-it": "^12.3.5",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.1",
