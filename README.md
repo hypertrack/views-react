@@ -3,15 +3,15 @@
 In the project directory, you can run:
 
 ```
-$ npm install --save hypertrack-sdk-react
-$ yarn add hypertrack-sdk-react
+$ npm install --save hypertrack-views-react
+$ yarn add hypertrack-views-react
 ```
 
 ## Usage
 
 ```javascript
 import React from 'react';
-import { LiveView } from 'hypertrack-sdk-react';
+import { LiveView } from 'hypertrack-views-react';
 
 const App = () => {
   const [tooltip, setTooltip] = React.useState(false);
