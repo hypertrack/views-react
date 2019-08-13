@@ -1,6 +1,6 @@
 {
   "name": "hypertrack-sdk-reactjs",
-  "version": "1.1.2",
+  "version": "1.0.1",
   "private": false,
   "license": "MIT",
   "main": "index.js",
@@ -33,7 +33,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-animate-height": "^2.0.15",
-    "react-apollo": "^3.0.0",
+    "react-apollo": "^2.5.8",
     "react-day-picker": "^7.3.0",
     "react-detect-offline": "^2.3.0",
     "react-dom": "^16.9.0",
