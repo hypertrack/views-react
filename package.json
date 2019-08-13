@@ -11,6 +11,10 @@
     "README.MD"
   ],
   "style": "leaflet/dist/leaflet.css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypertrack/views-react.git"
+  },
   "dependencies": {
     "apollo-client": "^2.6.4",
     "apollo-link": "^1.2.12",
