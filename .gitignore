@@ -9,7 +9,7 @@
 /coverage
 
 # production
-index.js
+/index.js
 
 # sample app
 /sample/node_modules
