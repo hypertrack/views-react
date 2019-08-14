@@ -8,7 +8,9 @@ import {
   Select,
   Typography,
   Form,
-  Checkbox
+  Checkbox,
+  Result,
+  Button
 } from "antd";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -30,15 +32,15 @@ class App extends React.Component {
       customLayerUrl: "",
       assetsUrl: "",
       code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
-      publishableKey="${process.env.REACT_APP_PUBLISHABLE_KEY ||
+      publishableKey={"${process.env.REACT_APP_PUBLISHABLE_KEY ||
         PUBLISHABLE_KEY ||
-        ""}"
-      showTooltips=false
-      showDeviceList=false
-      selectedDeviceId=""
-      defaultLayer="base"
-      customLayerUrl=""
-      assetsUrl=""
+        ""}"}
+      showTooltips={false}
+      showDeviceList={false}
+      selectedDeviceId={""}
+      defaultLayer={"base"}
+      customLayerUrl={""}
+      assetsUrl={""}
     />`
     };
   }
@@ -123,13 +125,13 @@ class App extends React.Component {
   updateCode() {
     this.setState({
       code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
-      publishableKey="${this.state.publishableKey}"
-      showTooltips=${this.state.tooltip}
-      showDeviceList=${this.state.deviceList}
-      selectedDeviceId="${this.state.deviceId}"
-      defaultLayer="${this.state.defaultLayer}"
-      customLayerUrl="${this.state.customLayerUrl}"
-      assetsUrl="${this.state.assetsUrl}"
+      publishableKey={"${this.state.publishableKey}"}
+      showTooltips={${this.state.tooltip}}
+      showDeviceList={${this.state.deviceList}}
+      selectedDeviceId={"${this.state.deviceId}"}
+      defaultLayer={"${this.state.defaultLayer}"}
+      customLayerUrl={"${this.state.customLayerUrl}"}
+      assetsUrl={"${this.state.assetsUrl}"}
     />`
     });
   }
@@ -152,9 +154,23 @@ class App extends React.Component {
                 <Title>HyperTrack Views ReactJS</Title>
               </Col>
             </Row>
-            {this.state.publishableKey !== "" && (
-              <Row style={{ padding: "25px" }}>
-                <Col span={20} offset={2}>
+            <Row style={{ padding: "25px" }}>
+              <Col span={20} offset={2}>
+                {this.state.publishableKey === "" && (
+                  <Result
+                    style={{ height: "300px" }}
+                    title="Please set your publishable key"
+                    subTitle={
+                      <a
+                        href="https://dashboard.hypertrack.com/setup"
+                        target="_blank"
+                      >
+                        Get it from the HyperTrack Dashboard
+                      </a>
+                    }
+                  />
+                )}
+                {this.state.publishableKey !== "" && (
                   <LiveView
                     publishableKey={this.state.publishableKey}
                     showTooltips={this.state.tooltip}
@@ -165,9 +181,9 @@ class App extends React.Component {
                     className="liveView"
                     assetsUrl={this.state.assetsUrl}
                   />
-                </Col>
-              </Row>
-            )}
+                )}
+              </Col>
+            </Row>
             <Row style={{ padding: "25px" }}>
               <Col span={9} offset={2}>
                 <Form layout="vertical">
@@ -181,6 +197,7 @@ class App extends React.Component {
                   </Form.Item>
                   <Form.Item label="Publishable Key">
                     <Input
+                      id="publishableKeyInput"
                       placeholder="Your Publishable Key"
                       value={this.state.publishableKey}
                       onChange={e => this.setPusblishableKey(e)}

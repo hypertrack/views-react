@@ -112,7 +112,7 @@ Here are some sample layer tiles:
 
 By default, the views display a set of icons to indicate status, activity, and more. You can replace each icon individually. Below is a list of all the replaceable icons.
 
-**Original Icons**: You can use the [default icons](i) and make your modifications
+> **Original Icons**: You can use the [default icons](i) and make your modifications
 
 | Filename             | Default                                                                                                     | Description                                               |
 | -------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
