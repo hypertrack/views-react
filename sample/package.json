@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.21.4",
     "hypertrack-views-react": "^1.0.8",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",

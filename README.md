@@ -11,7 +11,38 @@ A wrapper for views provided through the [HyperTrack dashboard](https://dashboar
 - Set up a HyperTrack account and obtain your [Publishable Key from the Dashboard](https://dashboard.hypertrack.com/setup)
 - Integrate the HyperTrack SDK in your application ([iOS](https://github.com/hypertrack/quickstart-ios), [Android](https://github.com/hypertrack/quickstart-android), or [React Native](https://github.com/hypertrack/quickstart-react-native)) or use our sample app to send location data ([iOS](https://github.com/hypertrack/live-app-ios) or [Android](https://github.com/hypertrack/live-app-android))
 
-## Installing
+## Explore sample app
+
+You can use the sample app provided to explore the capabilities and usage of this component. Please [visit this page to open the sample app]().
+
+To run the sample app on yoru own, follow these steps:
+
+Jump to the sample app folder:
+
+```shell
+cd sample
+```
+
+Install all app dependencies:
+
+```shell
+npm i
+
+yarn
+```
+
+Run the sample app with your own Publishable Key:
+
+```shell
+REACT_APP_PUBLISHABLE_KEY=<your_key> node start
+
+REACT_APP_PUBLISHABLE_KEY=<your_key> yarn start
+```
+
+The CLI will open up the locally hosted sample app and should look like this:
+![]()
+
+## Installation
 
 You can use either Yarn or NPM to add `hypertrack-views-react` to your project:
 
@@ -30,22 +61,22 @@ const PUBLISHABLE_KEY = "<your_key>";
 
 <LiveView
   publishableKey={PUBLISHABLE_KEY}
-  isTooltipsShown={false}
+  isTooltipsShown={true}
   isDeviceListShown={false}
   selectedDeviceId={"00112233-4455-6677-8899-AABBCCDDEEFF"}
-  defaultLayer={"street"}
-  customLayer={"http://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}’"}
+  defaultLayer={"custom"}
+  customLayer={"http://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"}
   assetsUrl={"https://abc-sdk-test-assets.s3-us-west-2.amazonaws.com/"}
 />;
 ```
 
-### Configuration
+## Configuration
 
 | Property          | Type    | Default | Description                                                                                                                                                                                                                                              |
 | ----------------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | publishableKey    | string  | N/A     | The publishable key of your account from the [Setup page on the Dashboard](https://dashboard.hypertrack.com/setup)                                                                                                                                       |
 | isTooltipsShown   | boolean | `false` | Show the device ID right next to the location marker of a device                                                                                                                                                                                         |
-| isDeviceListShown | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location                                                                                                                     |
+| isDeviceListShown | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location.                                                                                                                    |
 | selectedDeviceId  | string  | `null`  | ID of the device to be displayed (case sensistive). Can be obtained using the [Device API](https://docs.hypertrack.com/#api-devices). Adding this will change the view to a single device mode (including device data, activity, and more)               |
 | defaultLayer      | string  | `base`  | Can be either one of: [`base`](https://cloud.maptiler.com/maps/voyager/), [`street`](https://cloud.maptiler.com/maps/streets/), [`satellite`](https://cloud.maptiler.com/maps/hybrid/), or `custom`. Custom will only work if a customLayer is provided. |
 | customLayer       | string  | `null`  | URL to a Leaflet-compatible [tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map) in XYZ format. Only raster is supported and it needs to be public accessible.                                                                                   |
