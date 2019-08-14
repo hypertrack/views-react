@@ -8,10 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <button
-        style={{ position: "absolute", zIndex: 12, width: "50px" }}
-        onClick={() => setButton(!button)}
-      />
+      <button onClick={() => setButton(!button)} />
       <div className="hypertrack-container">
         <LiveView
           publishableKey={

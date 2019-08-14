@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "hypertrack-views-react": "^1.0.8",
+    "hypertrack-views-react": "../hypertrack-views-react-v1.0.8.tgz",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "3.0.1"

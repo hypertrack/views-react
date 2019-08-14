@@ -23,11 +23,11 @@
   color: #61dafb;
 }
 .hypertrack-container {
-  position: absolute;
-  width: 80vw;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* position: absolute; */
+  /* width: 80vw; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
 }
 .testClass {
   height: 80vh !important;

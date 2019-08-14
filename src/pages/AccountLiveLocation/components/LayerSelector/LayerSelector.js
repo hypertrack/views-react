@@ -9,7 +9,7 @@ const LayerSelector = ({
   assetsUrl,
   selectedMapLayerState,
   setSelectedMapLayer,
-  customLayer
+  customLayerUrl
 }) => {
   const [showMenu, setShowMenu] = React.useState(false)
   const [height, setHeight] = React.useState(0)
@@ -88,7 +88,7 @@ const LayerSelector = ({
             >
               <Icon assetsurl={assetsUrl} height={24} variant={'satellite'} />
             </button>
-            {customLayer ? (
+            {customLayerUrl ? (
               <button
                 className={classNames(styles.layerButton, {
                   [styles.active]:
@@ -96,7 +96,7 @@ const LayerSelector = ({
                     selectedMapLayerState.name === 'custom'
                 })}
                 value="custom"
-                data-layer={customLayer}
+                data-layer={customLayerUrl}
               >
                 <Icon assetsurl={assetsUrl} height={24} variant={'custom'} />
               </button>
