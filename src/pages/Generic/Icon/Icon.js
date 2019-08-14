@@ -87,7 +87,7 @@ Icon.propTypes = {
     'navigate',
     'notification',
     'offline',
-    'paused',
+    'inactive',
     'permission-denied',
     'plus',
     'profile',

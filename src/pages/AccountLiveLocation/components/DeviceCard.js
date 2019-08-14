@@ -20,7 +20,7 @@ const DeviceCard = ({
         ? device.activity.data.value
         : 'unknown'
   } else if (device.device_status === CONSTANTS.movementStatus.inactive)
-    variant = 'paused'
+    variant = 'inactive'
   else variant = 'disconnected'
   return (
     <div

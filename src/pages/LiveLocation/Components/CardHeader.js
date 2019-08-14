@@ -21,7 +21,7 @@ const activityIcon = (connectionStatus, locationProps, loading, assetsUrl) => {
     } else if (
       locationProps.device_status === CONSTANTS.movementStatus.inactive
     ) {
-      variant = 'paused'
+      variant = 'inactive'
     } else {
       variant = 'disconnected'
     }

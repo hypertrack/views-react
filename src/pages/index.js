@@ -46,6 +46,8 @@ const LiveViewContainer = props => {
     setSelectedDeviceForSingleDeviceView
   ] = React.useState(selectedDeviceId)
 
+  const [selectedAssetsUrl, setSelectedAssetsUrl] = React.useState(assetsUrl)
+
   const [state, dispatch] = React.useReducer(reducer, initialState)
   const [viewport, setViewport] = React.useState({})
   React.useEffect(
@@ -64,6 +66,18 @@ const LiveViewContainer = props => {
     },
     [defaultLayer, customLayerUrl]
   )
+  React.useEffect(
+    () => {
+      setSelectedDeviceForSingleDeviceView(selectedDeviceId)
+    },
+    [selectedDeviceId]
+  )
+  React.useEffect(
+    () => {
+      setSelectedAssetsUrl(assetsUrl)
+    },
+    [assetsUrl]
+  )
 
   return (
     <Suspense fallback={<PageLoader />}>
@@ -71,7 +85,7 @@ const LiveViewContainer = props => {
         <div className={styles.liveLocationContainer}>
           {selectedDeviceForSingleDeviceView ? (
             <LiveLocation
-              assetsUrl={assetsUrl}
+              selectedAssetsUrl={selectedAssetsUrl}
               selectedDeviceForSingleDeviceView={
                 selectedDeviceForSingleDeviceView
               }
@@ -84,7 +98,7 @@ const LiveViewContainer = props => {
             />
           ) : (
             <AccountLiveLocation
-              assetsUrl={assetsUrl}
+              selectedAssetsUrl={selectedAssetsUrl}
               className={className}
               defaultLayer={defaultLayer}
               path="devices"
