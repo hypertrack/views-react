@@ -23,6 +23,9 @@
   &.isWidget {
     margin-top: setSpace(12);
   }
+  &.showDeviceCard {
+    display: none;
+  }
 }
 
 .deviceLiveCardContainer {

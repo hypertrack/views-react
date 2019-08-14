@@ -54,6 +54,7 @@ const AccountLiveLocationContainer = ({
           )
         )
           return <EmptyState />
+        console.log(assetsUrl)
         return (
           <AccountLiveLocation
             assetsUrl={assetsUrl}

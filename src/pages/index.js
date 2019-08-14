@@ -26,15 +26,17 @@ function reducer(state, action) {
 
 const LiveViewContainer = props => {
   const {
-    assetsUrl,
     className,
     defaultLayer,
     publishableKey,
     customLayerUrl,
+    showDeviceCard,
     showDeviceList,
     showTooltips,
     selectedDeviceId
   } = props
+  const assetsUrl =
+    props.assetsUrl.substr(-1) !== '/' ? props.assetsUrl + '/' : props.assetsUrl
   const initialState =
     defaultLayer !== 'custom'
       ? CONSTANTS.tileLayers[defaultLayer]
@@ -52,7 +54,6 @@ const LiveViewContainer = props => {
   const [viewport, setViewport] = React.useState({})
   React.useEffect(
     () => {
-      console.log(defaultLayer)
       if (defaultLayer !== 'custom') {
         dispatch({
           type: defaultLayer
@@ -94,6 +95,7 @@ const LiveViewContainer = props => {
               }
               selectedMapLayerState={state}
               setSelectedMapLayer={dispatch}
+              showDeviceCard={showDeviceCard}
               publishableKey={publishableKey}
             />
           ) : (
@@ -133,6 +135,7 @@ LiveViewContainer.propTypes = {
 
   defaultLayer: PropTypes.oneOf(['base', 'street', 'satellite', 'custom']),
   showDeviceList: PropTypes.bool,
+  showDeviceCard: PropTypes.bool,
   showTooltips: PropTypes.bool
 }
 
@@ -143,5 +146,6 @@ LiveViewContainer.defaultProps = {
     name: 'base'
   },
   showDeviceList: true,
+  showDeviceCard: true,
   showTooltips: false
 }
