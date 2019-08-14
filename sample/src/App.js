@@ -28,7 +28,7 @@ class App extends React.Component {
         process.env.REACT_APP_PUBLISHABLE_KEY || PUBLISHABLE_KEY || "",
       defaultLayer: "base",
       deviceId: "",
-      customLayer: "",
+      customLayerUrl: "",
       assetsUrl: "",
       code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
       publishableKey=${process.env.REACT_APP_PUBLISHABLE_KEY ||
@@ -38,7 +38,7 @@ class App extends React.Component {
       isDeviceListShown=false
       selectedDeviceId=""
       defaultLayer="base"
-      customLayer=""
+      customLayerUrl=""
       assetsUrl=""
     />`
     };
@@ -102,7 +102,7 @@ class App extends React.Component {
   setCustomLayer(e) {
     this.setState(
       {
-        customLayer: e.target.value
+        customLayerUrl: e.target.value
       },
       () => {
         this.updateCode();
@@ -131,7 +131,7 @@ class App extends React.Component {
       isDeviceListShown=${this.state.deviceList}
       selectedDeviceId="${this.state.deviceId}"
       defaultLayer="${this.state.defaultLayer}"
-      customLayer="${this.state.customLayer}"
+      customLayerUrl="${this.state.customLayerUrl}"
       assetsUrl="${this.state.assetsUrl}"
     />`
     });
@@ -164,7 +164,7 @@ class App extends React.Component {
                     isDeviceListShown={this.state.deviceList}
                     selectedDeviceId={this.state.deviceId}
                     defaultLayer={this.state.defaultLayer}
-                    customLayer={this.state.customLayer}
+                    customLayerUrl={this.state.customLayerUrl}
                     className="liveView"
                     assetsUrl={this.state.assetsUrl}
                   />
@@ -199,7 +199,7 @@ class App extends React.Component {
                   <Form.Item label="Custom Layer URL">
                     <Input
                       placeholder="Your Custom Layer URL"
-                      value={this.state.customLayer}
+                      value={this.state.customLayerUrl}
                       onChange={e => this.setCustomLayer(e)}
                     />
                   </Form.Item>

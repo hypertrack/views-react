@@ -38,7 +38,7 @@ const LiveViewContainer = props => {
   const initialState =
     defaultLayer !== 'custom'
       ? CONSTANTS.tileLayers[defaultLayer]
-      : customLayerUrl
+      : customLayerUrl !== ''
       ? { selectedLayer: customLayerUrl, name: 'custom' }
       : props.initialState
   const [
@@ -55,14 +55,14 @@ const LiveViewContainer = props => {
         dispatch({
           type: defaultLayer
         })
-      } else {
+      } else if (customLayerUrl !== '') {
         dispatch({
           type: 'custom',
           data: customLayerUrl
         })
       }
     },
-    [defaultLayer]
+    [defaultLayer, customLayerUrl]
   )
 
   return (

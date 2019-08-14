@@ -5,7 +5,7 @@
   "dependencies": {
     "antd": "^3.21.4",
     "gh-pages": "^2.1.1",
-    "hypertrack-views-react": "^1.1.2",
+    "hypertrack-views-react": "../hypertrack-views-react-v1.1.5.tgz",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "3.0.1",

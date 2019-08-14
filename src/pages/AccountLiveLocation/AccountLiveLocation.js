@@ -80,7 +80,17 @@ const AccountLiveLocation = ({
               setSelectedMapLayer={setSelectedMapLayer}
               customLayerUrl={customLayerUrl}
             />
-
+            <If condition={Boolean(isDeviceListShown)}>
+              <Then>
+                <DeviceList
+                  assetsUrl={assetsUrl}
+                  devices={devices}
+                  selectedDeviceId={selectedDeviceId}
+                  setSelectedDeviceId={setSelectedDeviceId}
+                  isWidget={isWidget}
+                />
+              </Then>
+            </If>
             <div
               className={classNames(styles.mapContainer, {
                 [styles.isWidget]: isWidget
