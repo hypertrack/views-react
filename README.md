@@ -31,6 +31,8 @@ npm i
 yarn
 ```
 
+> Note: Do not run the installation in the root folder. If that has been done before sample app dependecies were installed, NPM will use installed packages from the root node_modules and might reason conflicts breaking the build process.
+
 Run the sample app with your own Publishable Key:
 
 ```shell
