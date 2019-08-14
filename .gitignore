@@ -30,3 +30,6 @@ yarn-debug.log*
 yarn-error.log*
 
 *.tgz
+
+# gh-pages
+*/build/*

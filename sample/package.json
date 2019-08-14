@@ -1,14 +1,22 @@
 {
-  "name": "test",
-  "version": "0.1.0",
-  "private": true,
+  "name": "hypertrack-views-react-sample",
+  "version": "1.0.0",
+  "homepage": ".",
   "dependencies": {
+<<<<<<< HEAD
     "hypertrack-views-react": "../hypertrack-views-react-v1.0.8.tgz",
+=======
+    "antd": "^3.21.4",
+    "gh-pages": "^2.1.1",
+    "hypertrack-views-react": "^1.0.8",
+>>>>>>> 4bfba97d3e09dbc34a001dfc293b3960136190f4
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "3.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
