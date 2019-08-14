@@ -13,7 +13,7 @@ A wrapper for views provided through the [HyperTrack dashboard](https://dashboar
 
 ## Explore sample app
 
-You can use the sample app provided to explore the capabilities and usage of this component. Please [visit this page to open the sample app]().
+You can use the sample app provided to explore the capabilities and usage of this component. Please [visit this page to open the sample app](https://hypertrack.github.io/views-react/).
 
 To run the sample app on yoru own, follow these steps:
 
