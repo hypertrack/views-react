@@ -155,22 +155,24 @@ class App extends React.Component {
                 <Title>HyperTrack Views ReactJS</Title>
               </Col>
             </Row>
+            {this.state.publishableKey !== "" && (
+              <Row style={{ padding: "25px" }}>
+                <Col span={20} offset={2}>
+                  <LiveView
+                    publishableKey={this.state.publishableKey}
+                    isTooltipsShown={this.state.tooltip}
+                    isDeviceListShown={this.state.deviceList}
+                    selectedDeviceId={this.state.deviceId}
+                    defaultLayer={this.state.defaultLayer}
+                    customLayer={this.state.customLayer}
+                    className="liveView"
+                    assetsUrl={this.state.assetsUrl}
+                  />
+                </Col>
+              </Row>
+            )}
             <Row style={{ padding: "25px" }}>
-              <Col span={16} offset={8}>
-                <LiveView
-                  publishableKey={this.state.publishableKey}
-                  isTooltipsShown={this.state.tooltip}
-                  isDeviceListShown={this.state.deviceList}
-                  selectedDeviceId={this.state.deviceId}
-                  defaultLayer={this.state.defaultLayer}
-                  customLayer={this.state.customLayer}
-                  className="liveView"
-                  assetsUrl={this.state.assetsUrl}
-                />
-              </Col>
-            </Row>
-            <Row style={{ padding: "25px" }}>
-              <Col span={10} offset={2}>
+              <Col span={9} offset={2}>
                 <Form layout="vertical">
                   <Form.Item label="View Options">
                     <Checkbox onChange={() => this.setTooltip()}>
@@ -220,7 +222,7 @@ class App extends React.Component {
                   </Form.Item>
                 </Form>
               </Col>
-              <Col span={10} offset={2}>
+              <Col span={9} offset={2}>
                 <SyntaxHighlighter
                   wrapLines={true}
                   language="javascript"
