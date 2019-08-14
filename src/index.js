@@ -35,9 +35,7 @@ const LiveView = props => {
   console.log('LiveView rendering')
   return (
     <ApolloProvider client={client}>
-      <div>
-        <LiveViewContainer {...props} />
-      </div>
+      <LiveViewContainer {...props} />
     </ApolloProvider>
   )
 }
@@ -62,8 +60,9 @@ if (process.env.REACT_APP_PUBLISHABLE_KEY) {
         }
         isTooltipsShown={false}
         isDeviceListShown={false}
+        className="testClass"
         defaultLayer={'custom'}
-        customLayer={'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'}
+        customLayerUrl={'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'}
         assetsUrl={'https://abc-sdk-test-assets.s3-us-west-2.amazonaws.com/'}
       />
     </div>,

@@ -27,8 +27,7 @@ const AccountLiveLocation = ({
   setTooltipSwitch,
   layerType,
   layerTypes,
-  customLayer,
-  mapLayers,
+  customLayerUrl,
   selectedDeviceForSingleDeviceView,
   setSelectedDeviceForSingleDeviceView,
   selectedMapLayerState,
@@ -61,7 +60,7 @@ const AccountLiveLocation = ({
         )
 
         return (
-          <div className={className}>
+          <>
             {/*
           <button
               style={{
@@ -79,20 +78,9 @@ const AccountLiveLocation = ({
               assetsUrl={assetsUrl}
               selectedMapLayerState={selectedMapLayerState}
               setSelectedMapLayer={setSelectedMapLayer}
-              customLayer={customLayer}
+              customLayerUrl={customLayerUrl}
             />
 
-            <If condition={Boolean(isDeviceListShown)}>
-              <Then>
-                <DeviceList
-                  assetsUrl={assetsUrl}
-                  devices={devices}
-                  selectedDeviceId={selectedDeviceId}
-                  setSelectedDeviceId={setSelectedDeviceId}
-                  isWidget={isWidget}
-                />
-              </Then>
-            </If>
             <div
               className={classNames(styles.mapContainer, {
                 [styles.isWidget]: isWidget
@@ -113,7 +101,7 @@ const AccountLiveLocation = ({
                 selectedMapLayerState={selectedMapLayerState}
               />
             </div>
-          </div>
+          </>
         )
       }}
     </Subscription>

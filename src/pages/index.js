@@ -6,7 +6,7 @@ import AccountLiveLocation from './AccountLiveLocation'
 import LiveLocation from './LiveLocation'
 import CONSTANTS from '../constants'
 
-import './index.scss'
+import styles from './index.module.scss'
 
 function reducer(state, action) {
   switch (action.type) {
@@ -30,8 +30,7 @@ const LiveViewContainer = props => {
     className,
     defaultLayer,
     publishableKey,
-    mapLayers,
-    customLayer,
+    customLayerUrl,
     isDeviceListShown,
     isTooltipsShown,
     selectedDeviceId
@@ -39,8 +38,8 @@ const LiveViewContainer = props => {
   const initialState =
     defaultLayer !== 'custom'
       ? CONSTANTS.tileLayers[defaultLayer]
-      : customLayer
-      ? { selectedLayer: customLayer, name: 'custom' }
+      : customLayerUrl
+      ? { selectedLayer: customLayerUrl, name: 'custom' }
       : props.initialState
   const [
     selectedDeviceForSingleDeviceView,
@@ -49,42 +48,65 @@ const LiveViewContainer = props => {
 
   const [state, dispatch] = React.useReducer(reducer, initialState)
   const [viewport, setViewport] = React.useState({})
+  React.useEffect(
+    () => {
+      console.log(defaultLayer)
+      if (defaultLayer !== 'custom') {
+        dispatch({
+          type: defaultLayer
+        })
+      } else {
+        dispatch({
+          type: 'custom',
+          data: customLayerUrl
+        })
+      }
+    },
+    [defaultLayer]
+  )
 
   return (
     <Suspense fallback={<PageLoader />}>
-      {selectedDeviceForSingleDeviceView ? (
-        <LiveLocation
-          assetsUrl={assetsUrl}
-          selectedDeviceForSingleDeviceView={selectedDeviceForSingleDeviceView}
-          setSelectedDeviceForSingleDeviceView={
-            setSelectedDeviceForSingleDeviceView
-          }
-          selectedMapLayerState={state}
-          setSelectedMapLayer={dispatch}
-          publishableKey={publishableKey}
-        />
-      ) : (
-        <AccountLiveLocation
-          assetsUrl={assetsUrl}
-          className={className}
-          defaultLayer={defaultLayer}
-          path="devices"
-          publishableKey={publishableKey}
-          isWidget={true}
-          isDeviceListShown={isDeviceListShown}
-          isTooltipsShown={isTooltipsShown}
-          customLayer={customLayer}
-          selectedDeviceForSingleDeviceView={selectedDeviceForSingleDeviceView}
-          setSelectedDeviceForSingleDeviceView={
-            setSelectedDeviceForSingleDeviceView
-          }
-          selectedMapLayerState={state}
-          setSelectedMapLayer={dispatch}
-          mapLayers={mapLayers}
-          viewport={viewport}
-          setViewport={setViewport}
-        />
-      )}
+      <div className={className}>
+        <div className={styles.liveLocationContainer}>
+          {selectedDeviceForSingleDeviceView ? (
+            <LiveLocation
+              assetsUrl={assetsUrl}
+              selectedDeviceForSingleDeviceView={
+                selectedDeviceForSingleDeviceView
+              }
+              setSelectedDeviceForSingleDeviceView={
+                setSelectedDeviceForSingleDeviceView
+              }
+              selectedMapLayerState={state}
+              setSelectedMapLayer={dispatch}
+              publishableKey={publishableKey}
+            />
+          ) : (
+            <AccountLiveLocation
+              assetsUrl={assetsUrl}
+              className={className}
+              defaultLayer={defaultLayer}
+              path="devices"
+              publishableKey={publishableKey}
+              isWidget={true}
+              isDeviceListShown={isDeviceListShown}
+              isTooltipsShown={isTooltipsShown}
+              customLayerUrl={customLayerUrl}
+              selectedDeviceForSingleDeviceView={
+                selectedDeviceForSingleDeviceView
+              }
+              setSelectedDeviceForSingleDeviceView={
+                setSelectedDeviceForSingleDeviceView
+              }
+              selectedMapLayerState={state}
+              setSelectedMapLayer={dispatch}
+              viewport={viewport}
+              setViewport={setViewport}
+            />
+          )}
+        </div>
+      </div>
     </Suspense>
   )
 }
@@ -93,7 +115,8 @@ export default LiveViewContainer
 
 LiveViewContainer.propTypes = {
   publishableKey: PropTypes.string.isRequired,
-  customLayer: PropTypes.string,
+  customLayerUrl: PropTypes.string,
+
   defaultLayer: PropTypes.oneOf(['base', 'street', 'satellite', 'custom']),
   isDeviceListShown: PropTypes.bool,
   isTooltipsShown: PropTypes.bool

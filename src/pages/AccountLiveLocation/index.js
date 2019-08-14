@@ -15,11 +15,10 @@ const getPublicListDevicesStatus = gql`
 const AccountLiveLocationContainer = ({
   assetsUrl,
   className,
-  customLayer,
+  customLayerUrl,
   isWidget,
   layerType,
   layerTypes,
-  mapLayers,
   publishableKey,
   selectedDeviceForSingleDeviceView,
   setSelectedDeviceForSingleDeviceView,
@@ -58,7 +57,6 @@ const AccountLiveLocationContainer = ({
         return (
           <AccountLiveLocation
             assetsUrl={assetsUrl}
-            className={className}
             initialDeviceListOrder={getDeviceListOrder(
               data.listPublicDevicesStatus
             )}
@@ -67,12 +65,11 @@ const AccountLiveLocationContainer = ({
             )}
             accountId={data.listPublicDevicesStatus[0].account_id} // TODO we need to rethink this
             isWidget={isWidget}
-            customLayer={customLayer}
+            customLayerUrl={customLayerUrl}
             isDeviceListShown={isDeviceListShown}
             isTooltipsShown={isTooltipsShown}
             layerType={layerType}
             layerTypes={layerTypes}
-            mapLayers={mapLayers}
             selectedDeviceForSingleDeviceView={
               selectedDeviceForSingleDeviceView
             }
