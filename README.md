@@ -4,7 +4,7 @@ A wrapper for views provided through the [HyperTrack dashboard](https://dashboar
 
 > Please check out the [Views Guide](https://docs.hypertrack.com/#views) for a closer look at the capabilities provided by HyhperTrack Views.
 
-![sample view](https://github.com/hypertrack/views-react/blob/master/public/sample.png "Sample View")
+![sample view](public/sample.png "Sample View")
 
 ## Prerequisites
 
@@ -34,13 +34,13 @@ yarn
 Run the sample app with your own Publishable Key:
 
 ```shell
-REACT_APP_PUBLISHABLE_KEY=<your_key> node start
+REACT_APP_PUBLISHABLE_KEY=<your_key> node run start
 
 REACT_APP_PUBLISHABLE_KEY=<your_key> yarn start
 ```
 
 The CLI will open up the locally hosted sample app and should look like this:
-![]()
+![sample app](public/sample-app.png "Sample App")
 
 ## Installation
 
@@ -88,11 +88,11 @@ const PUBLISHABLE_KEY = "<your_key>";
 
 When provided with the `selectedDeviceId` property, the component will render a single device view as opposed to the device overview. You can find more details in the [Live device view documentation](https://docs.hypertrack.com/#live-device-view).
 
-![live device view](https://github.com/hypertrack/views-react/blob/master/public/sample-single-device.png?raw=true "Live Device View")
+![live device view](public/sample-single-device.png "Live Device View")
 
 #### Adding a custom map layer
 
-With the `customLayer` property, you can reference a raster tile to be added as a custom map layer. Users can select the custom view from the ![map-layer-icon](https://github.com/hypertrack/views-react/blob/master/public/map-layer.png?raw=true "map layer icon") button on the top right side of the view. The layer is pre-selected based on the `defaultLayer` property. After setting the `customLayer`, you can set the `defaultLayer` property to `custom` to render this new tile by default.
+With the `customLayer` property, you can reference a raster tile to be added as a custom map layer. Users can select the custom view from the ![map-layer-icon](public/map-layer.png "map layer icon") button on the top right side of the view. The layer is pre-selected based on the `defaultLayer` property. After setting the `customLayer`, you can set the `defaultLayer` property to `custom` to render this new tile by default.
 
 There are different ways to obtain and/or generate a custom layer. [OpenMapTiles](https://openmaptiles.org/) might be of interest. You can also generate/customize [MapBox maps and access them as raster tiles](https://docs.mapbox.com/api/maps/#raster-tiles).
 
