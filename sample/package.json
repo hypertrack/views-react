@@ -5,10 +5,11 @@
   "dependencies": {
     "antd": "^3.21.4",
     "gh-pages": "^2.1.1",
-    "hypertrack-views-react": "^1.0.8",
+    "hypertrack-views-react": "^1.1.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-syntax-highlighter": "^11.0.2"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -1,6 +1,17 @@
 import React from "react";
 import { LiveView } from "hypertrack-views-react";
-import { Layout, Input, Row, Col, Button, Select } from "antd";
+import {
+  Layout,
+  Input,
+  Row,
+  Col,
+  Select,
+  Typography,
+  Form,
+  Checkbox
+} from "antd";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import "./App.css";
 
@@ -18,115 +29,208 @@ class App extends React.Component {
       defaultLayer: "base",
       deviceId: "",
       customLayer: "",
-      assetsUrl: ""
+      assetsUrl: "",
+      code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
+      publishableKey=${process.env.REACT_APP_PUBLISHABLE_KEY ||
+        PUBLISHABLE_KEY ||
+        ""}
+      isTooltipsShown=false
+      isDeviceListShown=false
+      selectedDeviceId=""
+      defaultLayer="base"
+      customLayer=""
+      assetsUrl=""
+    />`
     };
   }
 
   setTooltip() {
-    this.setState({
-      tooltip: !this.state.tooltip
-    });
+    this.setState(
+      {
+        tooltip: !this.state.tooltip
+      },
+      () => {
+        this.updateCode();
+      }
+    );
   }
 
   setDeviceList() {
-    this.setState({
-      deviceList: !this.state.deviceList
-    });
+    this.setState(
+      {
+        deviceList: !this.state.deviceList
+      },
+      () => {
+        this.updateCode();
+      }
+    );
   }
 
   setPusblishableKey(e) {
-    this.setState({
-      publishableKey: e.target.value
-    });
+    this.setState(
+      {
+        publishableKey: e.target.value
+      },
+      () => {
+        this.updateCode();
+      }
+    );
   }
 
   setDefaultLayer(defaultLayer) {
-    this.setState({
-      defaultLayer
-    });
+    this.setState(
+      {
+        defaultLayer
+      },
+      () => {
+        this.updateCode();
+      }
+    );
   }
 
-  setDeviceId(deviceId) {
-    this.setState({
-      deviceId
-    });
+  setDeviceId(e) {
+    this.setState(
+      {
+        deviceId: e.target.value
+      },
+      () => {
+        this.updateCode();
+      }
+    );
   }
 
   setCustomLayer(e) {
-    this.setState({
-      customLayer: e.target.value
-    });
+    this.setState(
+      {
+        customLayer: e.target.value
+      },
+      () => {
+        this.updateCode();
+      }
+    );
   }
 
   setAssetsUrl(e) {
+    this.setState(
+      {
+        assetsUrl: e.target.value
+      },
+      () => {
+        this.updateCode();
+      }
+    );
+  }
+
+  updateCode() {
     this.setState({
-      assetsUrl: e.target.value
+      code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
+      publishableKey=${process.env.REACT_APP_PUBLISHABLE_KEY ||
+        PUBLISHABLE_KEY ||
+        ""}
+      isTooltipsShown=${this.state.tooltip}
+      isDeviceListShown=${this.state.deviceList}
+      selectedDeviceId="${this.state.deviceId}"
+      defaultLayer="${this.state.defaultLayer}"
+      customLayer="${this.state.customLayer}"
+      assetsUrl="${this.state.assetsUrl}"
+    />`
     });
   }
 
   render() {
-    const { Header, Footer, Content } = Layout;
-
+    const { Content } = Layout;
     const { Option } = Select;
+    const { Title } = Typography;
+
     const layerOptions = ["base", "street", "satellite", "custom"];
+
+    console.log(this.state);
 
     return (
       <div className="App">
         <Layout>
-          <Header>Header</Header>
           <Content>
-            <Col>
-              <Row>
-                <Button type="primary" onClick={() => this.setTooltip()}>
-                  {`${this.state.tooltip ? "Hide tooltips" : "Show tooltips"}`}
-                </Button>
-                <Button type="primary" onClick={() => this.setDeviceList()}>
-                  {`${
-                    this.state.tooltip ? "Hide device list" : "Show device list"
-                  }`}
-                </Button>
-                <Input
-                  placeholder="Your Publishable Key"
-                  value={this.state.publishableKey}
-                  onChange={e => this.setPusblishableKey(e)}
+            <Row style={{ padding: "25px" }}>
+              <Col span={16} offset={8}>
+                <Title>HyperTrack Views ReactJS</Title>
+              </Col>
+            </Row>
+            <Row style={{ padding: "25px" }}>
+              <Col span={16} offset={8}>
+                <LiveView
+                  publishableKey={this.state.publishableKey}
+                  isTooltipsShown={this.state.tooltip}
+                  isDeviceListShown={this.state.deviceList}
+                  selectedDeviceId={this.state.deviceId}
+                  defaultLayer={this.state.defaultLayer}
+                  customLayer={this.state.customLayer}
+                  className="liveView"
+                  assetsUrl={this.state.assetsUrl}
                 />
-                <Input
-                  placeholder="Your Device ID"
-                  value={this.state.deviceId}
-                  onChange={e => this.setDeviceId(e)}
-                />
-                <Input
-                  placeholder="Your Custom Layer URL"
-                  value={this.state.customLayer}
-                  onChange={e => this.setCustomLayer(e)}
-                />
-                <Input
-                  placeholder="Your Assets URL"
-                  value={this.state.assetsUrl}
-                  onChange={e => this.setAssetsUrl(e)}
-                />
-                <Select
-                  defaultValue={this.state.defaultLayer}
-                  onChange={e => this.setDefaultLayer(e)}
+              </Col>
+            </Row>
+            <Row style={{ padding: "25px" }}>
+              <Col span={10} offset={2}>
+                <Form layout="vertical">
+                  <Form.Item label="View Options">
+                    <Checkbox onChange={() => this.setTooltip()}>
+                      Show tooltips
+                    </Checkbox>
+                    <Checkbox onChange={() => this.setDeviceList()}>
+                      Show device list
+                    </Checkbox>
+                  </Form.Item>
+                  <Form.Item label="Publishable Key">
+                    <Input
+                      placeholder="Your Publishable Key"
+                      value={this.state.publishableKey}
+                      onChange={e => this.setPusblishableKey(e)}
+                    />
+                  </Form.Item>
+                  <Form.Item label="Device ID">
+                    <Input
+                      placeholder="Your Device ID"
+                      value={this.state.deviceId}
+                      onChange={e => this.setDeviceId(e)}
+                    />
+                  </Form.Item>
+                  <Form.Item label="Custom Layer URL">
+                    <Input
+                      placeholder="Your Custom Layer URL"
+                      value={this.state.customLayer}
+                      onChange={e => this.setCustomLayer(e)}
+                    />
+                  </Form.Item>
+                  <Form.Item label="Asset URL">
+                    <Input
+                      placeholder="Your Assets URL"
+                      value={this.state.assetsUrl}
+                      onChange={e => this.setAssetsUrl(e)}
+                    />
+                  </Form.Item>
+                  <Form.Item label="Default Layer">
+                    <Select
+                      defaultValue={this.state.defaultLayer}
+                      onChange={e => this.setDefaultLayer(e)}
+                    >
+                      {layerOptions.map(layer => (
+                        <Option key={layer}>{layer}</Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                </Form>
+              </Col>
+              <Col span={10} offset={2}>
+                <SyntaxHighlighter
+                  wrapLines={true}
+                  language="javascript"
+                  style={docco}
                 >
-                  {layerOptions.map(layer => (
-                    <Option key={layer}>{layer}</Option>
-                  ))}
-                </Select>
-              </Row>
-            </Col>
-            <LiveView
-              publishableKey={this.state.publishableKey}
-              isTooltipsShown={this.state.tooltip}
-              isDeviceListShown={this.state.deviceList}
-              selectedDeviceId={this.state.deviceId}
-              defaultLayer={this.state.defaultLayer}
-              customLayer={this.state.customLayer}
-              className="liveView"
-              assetsUrl={this.state.assetsUrl}
-            />
+                  {this.state.code}
+                </SyntaxHighlighter>
+              </Col>
+            </Row>
           </Content>
-          <Footer>Footer</Footer>
         </Layout>
       </div>
     );
