@@ -85,7 +85,7 @@ const LiveViewContainer = props => {
         <div className={styles.liveLocationContainer}>
           {selectedDeviceForSingleDeviceView ? (
             <LiveLocation
-              selectedAssetsUrl={selectedAssetsUrl}
+              assetsUrl={selectedAssetsUrl}
               selectedDeviceForSingleDeviceView={
                 selectedDeviceForSingleDeviceView
               }
@@ -98,7 +98,7 @@ const LiveViewContainer = props => {
             />
           ) : (
             <AccountLiveLocation
-              selectedAssetsUrl={selectedAssetsUrl}
+              assetsUrl={selectedAssetsUrl}
               className={className}
               defaultLayer={defaultLayer}
               path="devices"

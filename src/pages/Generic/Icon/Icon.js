@@ -6,6 +6,7 @@ import CONSTANTS from './../../../constants'
 const batteryEvents = CONSTANTS.htEvent.battery
 
 const Icon = props => {
+  console.log(props.onClick)
   return (
     <img
       onClick={props.onClick}
