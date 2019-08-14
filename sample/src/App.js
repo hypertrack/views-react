@@ -123,9 +123,7 @@ class App extends React.Component {
   updateCode() {
     this.setState({
       code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
-      publishableKey=${process.env.REACT_APP_PUBLISHABLE_KEY ||
-        PUBLISHABLE_KEY ||
-        ""}
+      publishableKey=${this.state.publishableKey}
       isTooltipsShown=${this.state.tooltip}
       isDeviceListShown=${this.state.deviceList}
       selectedDeviceId="${this.state.deviceId}"
