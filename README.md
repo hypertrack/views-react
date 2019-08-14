@@ -39,7 +39,7 @@ REACT_APP_PUBLISHABLE_KEY=<your_key> node run start
 REACT_APP_PUBLISHABLE_KEY=<your_key> yarn start
 ```
 
-The CLI will open up the locally hosted sample app and should look like this:
+The CLI will open up the locally hosted sample app (`http://localhost:3000/`) and should look like this:
 ![sample app](public/sample-app.png "Sample App")
 
 ## Installation
