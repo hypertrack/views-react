@@ -63,8 +63,8 @@ const PUBLISHABLE_KEY = "<your_key>";
 
 <LiveView
   publishableKey={PUBLISHABLE_KEY}
-  isTooltipsShown={true}
-  isDeviceListShown={false}
+  showTooltips={true}
+  showDeviceList={false}
   selectedDeviceId={"00112233-4455-6677-8899-AABBCCDDEEFF"}
   defaultLayer={"custom"}
   customLayerUrl={"http://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"}
@@ -74,15 +74,15 @@ const PUBLISHABLE_KEY = "<your_key>";
 
 ## Configuration
 
-| Property          | Type    | Default | Description                                                                                                                                                                                                                                                 |
-| ----------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| publishableKey    | string  | N/A     | The publishable key of your account from the [Setup page on the Dashboard](https://dashboard.hypertrack.com/setup)                                                                                                                                          |
-| isTooltipsShown   | boolean | `false` | Show the device ID right next to the location marker of a device                                                                                                                                                                                            |
-| isDeviceListShown | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location.                                                                                                                       |
-| selectedDeviceId  | string  | `null`  | ID of the device to be displayed (case sensistive). Can be obtained using the [Device API](https://docs.hypertrack.com/#api-devices). Adding this will change the view to a single device mode (including device data, activity, and more)                  |
-| defaultLayer      | string  | `base`  | Can be either one of: [`base`](https://cloud.maptiler.com/maps/voyager/), [`street`](https://cloud.maptiler.com/maps/streets/), [`satellite`](https://cloud.maptiler.com/maps/hybrid/), or `custom`. Custom will only work if a customLayerUrl is provided. |
-| customLayerUrl    | string  | `null`  | URL to a Leaflet-compatible [tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map) in XYZ format. Only raster is supported and it needs to be public accessible.                                                                                      |
-| assetsUrl         | string  | `null`  | URL to a public asset folder containig SVG files to replace default icons. The filenames need to match exactly. Missing icons will show the default versions.                                                                                               |
+| Property         | Type    | Default | Description                                                                                                                                                                                                                                                 |
+| ---------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| publishableKey   | string  | N/A     | The publishable key of your account from the [Setup page on the Dashboard](https://dashboard.hypertrack.com/setup)                                                                                                                                          |
+| showTooltips     | boolean | `false` | Show the device ID right next to the location marker of a device                                                                                                                                                                                            |
+| showDeviceList   | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location.                                                                                                                       |
+| selectedDeviceId | string  | `null`  | ID of the device to be displayed (case sensistive). Can be obtained using the [Device API](https://docs.hypertrack.com/#api-devices). Adding this will change the view to a single device mode (including device data, activity, and more)                  |
+| defaultLayer     | string  | `base`  | Can be either one of: [`base`](https://cloud.maptiler.com/maps/voyager/), [`street`](https://cloud.maptiler.com/maps/streets/), [`satellite`](https://cloud.maptiler.com/maps/hybrid/), or `custom`. Custom will only work if a customLayerUrl is provided. |
+| customLayerUrl   | string  | `null`  | URL to a Leaflet-compatible [tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map) in XYZ format. Only raster is supported and it needs to be public accessible.                                                                                      |
+| assetsUrl        | string  | `null`  | URL to a public asset folder containig SVG files to replace default icons. The filenames need to match exactly. Missing icons will show the default versions.                                                                                               |
 
 > Note: The component passes along all additional properties, so you can use properties like `className`.
 
