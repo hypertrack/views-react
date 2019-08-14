@@ -30,9 +30,9 @@ class App extends React.Component {
       customLayerUrl: "",
       assetsUrl: "",
       code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
-      publishableKey=${process.env.REACT_APP_PUBLISHABLE_KEY ||
+      publishableKey="${process.env.REACT_APP_PUBLISHABLE_KEY ||
         PUBLISHABLE_KEY ||
-        ""}
+        ""}"
       showTooltips=false
       showDeviceList=false
       selectedDeviceId=""
@@ -123,7 +123,7 @@ class App extends React.Component {
   updateCode() {
     this.setState({
       code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
-      publishableKey=${this.state.publishableKey}
+      publishableKey="${this.state.publishableKey}"
       showTooltips=${this.state.tooltip}
       showDeviceList=${this.state.deviceList}
       selectedDeviceId="${this.state.deviceId}"
