@@ -30,7 +30,6 @@ const LiveViewContainer = props => {
     className,
     defaultLayer,
     publishableKey,
-    mapLayers,
     customLayerUrl,
     isDeviceListShown,
     isTooltipsShown,
@@ -49,6 +48,14 @@ const LiveViewContainer = props => {
 
   const [state, dispatch] = React.useReducer(reducer, initialState)
   const [viewport, setViewport] = React.useState({})
+  React.useEffect(
+    () => {
+      dispatch({
+        type: CONSTANTS.tileLayers[defaultLayer]
+      })
+    },
+    [defaultLayer]
+  )
 
   return (
     <Suspense fallback={<PageLoader />}>
@@ -86,7 +93,6 @@ const LiveViewContainer = props => {
               }
               selectedMapLayerState={state}
               setSelectedMapLayer={dispatch}
-              mapLayers={mapLayers}
               viewport={viewport}
               setViewport={setViewport}
             />

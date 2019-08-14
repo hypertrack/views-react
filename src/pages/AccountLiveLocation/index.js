@@ -19,7 +19,6 @@ const AccountLiveLocationContainer = ({
   isWidget,
   layerType,
   layerTypes,
-  mapLayers,
   publishableKey,
   selectedDeviceForSingleDeviceView,
   setSelectedDeviceForSingleDeviceView,
@@ -71,7 +70,6 @@ const AccountLiveLocationContainer = ({
             isTooltipsShown={isTooltipsShown}
             layerType={layerType}
             layerTypes={layerTypes}
-            mapLayers={mapLayers}
             selectedDeviceForSingleDeviceView={
               selectedDeviceForSingleDeviceView
             }

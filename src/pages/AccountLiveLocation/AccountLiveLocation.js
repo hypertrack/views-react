@@ -28,7 +28,6 @@ const AccountLiveLocation = ({
   layerType,
   layerTypes,
   customLayerUrl,
-  mapLayers,
   selectedDeviceForSingleDeviceView,
   setSelectedDeviceForSingleDeviceView,
   selectedMapLayerState,
