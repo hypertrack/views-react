@@ -60,6 +60,7 @@ if (process.env.REACT_APP_PUBLISHABLE_KEY) {
         }
         showTooltips={false}
         showDeviceList={false}
+        showDeviceCard={false}
         className="testClass"
         defaultLayer={'custom'}
         customLayerUrl={'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'}

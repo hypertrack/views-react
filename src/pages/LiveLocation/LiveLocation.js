@@ -21,7 +21,8 @@ const LiveLocationLoader = props => {
     publishableKey,
     trackingId,
     setSelectedDeviceForSingleDeviceView,
-    selectedMapLayerState
+    selectedMapLayerState,
+    showDeviceCard
   } = props
   const firstDeviceStatus = parseDeviceStatusResponse(getDeviceStatus || {})
   return (
@@ -51,6 +52,7 @@ const LiveLocationLoader = props => {
               setSelectedDeviceForSingleDeviceView
             }
             selectedMapLayerState={selectedMapLayerState}
+            showDeviceCard={showDeviceCard}
           />
         )
       }}

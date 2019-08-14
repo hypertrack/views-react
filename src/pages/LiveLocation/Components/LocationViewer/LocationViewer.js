@@ -67,6 +67,7 @@ const LocationViewer = props => {
     publishableKey,
     setSelectedDeviceForSingleDeviceView,
     selectedMapLayerState,
+    showDeviceCard,
     trackingId
   } = props
   const lastLocationEvents = React.useRef(
@@ -159,7 +160,8 @@ const LocationViewer = props => {
           >
             <div
               className={classNames(styles.cardWrapper, {
-                [styles.isWidget]: isWidget
+                [styles.isWidget]: isWidget,
+                [styles.showDeviceCard]: !showDeviceCard
               })}
             >
               <Card

@@ -23,6 +23,7 @@ const LiveLocationContainer = props => {
     setSelectedDeviceForSingleDeviceView,
     // setSelectedMapLayer,
     selectedMapLayerState,
+    showDeviceCard,
     trackingId
   } = props
 
@@ -54,6 +55,7 @@ const LiveLocationContainer = props => {
               setSelectedDeviceForSingleDeviceView
             }
             selectedMapLayerState={selectedMapLayerState}
+            showDeviceCard={showDeviceCard}
           />
         )
       }}
