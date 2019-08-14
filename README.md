@@ -65,6 +65,7 @@ const PUBLISHABLE_KEY = "<your_key>";
   publishableKey={PUBLISHABLE_KEY}
   showTooltips={true}
   showDeviceList={false}
+  showDeviceCard={false}
   selectedDeviceId={"00112233-4455-6677-8899-AABBCCDDEEFF"}
   defaultLayer={"custom"}
   customLayerUrl={"http://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"}
@@ -78,7 +79,8 @@ const PUBLISHABLE_KEY = "<your_key>";
 | ---------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | publishableKey   | string  | N/A     | The publishable key of your account from the [Setup page on the Dashboard](https://dashboard.hypertrack.com/setup)                                                                                                                                          |
 | showTooltips     | boolean | `false` | Show the device ID right next to the location marker of a device                                                                                                                                                                                            |
-| showDeviceList   | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location.                                                                                                                       |
+| showDeviceList   | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location                                                                                                                        |
+| showDeviceCard   | boolean | `true`  | Show the device detail card on the single device view                                                                                                                                                                                                       |
 | selectedDeviceId | string  | `null`  | ID of the device to be displayed (case sensistive). Can be obtained using the [Device API](https://docs.hypertrack.com/#api-devices). Adding this will change the view to a single device mode (including device data, activity, and more)                  |
 | defaultLayer     | string  | `base`  | Can be either one of: [`base`](https://cloud.maptiler.com/maps/voyager/), [`street`](https://cloud.maptiler.com/maps/streets/), [`satellite`](https://cloud.maptiler.com/maps/hybrid/), or `custom`. Custom will only work if a customLayerUrl is provided. |
 | customLayerUrl   | string  | `null`  | URL to a Leaflet-compatible [tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map) in XYZ format. Only raster is supported and it needs to be public accessible.                                                                                      |
@@ -91,6 +93,8 @@ const PUBLISHABLE_KEY = "<your_key>";
 When provided with the `selectedDeviceId` property, the component will render a single device view as opposed to the device overview. You can find more details in the [Live device view documentation](https://docs.hypertrack.com/#live-device-view).
 
 ![live device view](public/sample-single-device.png "Live Device View")
+
+> The device info card on the left side can be disabled by setting `showDeviceCard` to `false`
 
 #### Adding a custom map layer
 

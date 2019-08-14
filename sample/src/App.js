@@ -9,8 +9,7 @@ import {
   Typography,
   Form,
   Checkbox,
-  Result,
-  Button
+  Result
 } from "antd";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -26,6 +25,7 @@ class App extends React.Component {
     this.state = {
       tooltip: false,
       deviceList: false,
+      deviceCard: false,
       publishableKey: process.env.REACT_APP_PUBLISHABLE_KEY || PUBLISHABLE_KEY,
       defaultLayer: "base",
       deviceId: "",
@@ -37,6 +37,7 @@ class App extends React.Component {
         ""}"}
       showTooltips={false}
       showDeviceList={false}
+      showDeviceCard={false}
       selectedDeviceId={""}
       defaultLayer={"base"}
       customLayerUrl={""}
@@ -60,6 +61,17 @@ class App extends React.Component {
     this.setState(
       {
         deviceList: !this.state.deviceList
+      },
+      () => {
+        this.updateCode();
+      }
+    );
+  }
+
+  setDeviceCard() {
+    this.setState(
+      {
+        deviceCard: !this.state.deviceCard
       },
       () => {
         this.updateCode();
@@ -128,6 +140,7 @@ class App extends React.Component {
       publishableKey={"${this.state.publishableKey}"}
       showTooltips={${this.state.tooltip}}
       showDeviceList={${this.state.deviceList}}
+      showDeviceCard={${this.state.deviceCard}}
       selectedDeviceId={"${this.state.deviceId}"}
       defaultLayer={"${this.state.defaultLayer}"}
       customLayerUrl={"${this.state.customLayerUrl}"}
@@ -193,6 +206,9 @@ class App extends React.Component {
                     </Checkbox>
                     <Checkbox onChange={() => this.setDeviceList()}>
                       Show device list
+                    </Checkbox>
+                    <Checkbox onChange={() => this.setDeviceCard()}>
+                      Show device card
                     </Checkbox>
                   </Form.Item>
                   <Form.Item label="Publishable Key">
