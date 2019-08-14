@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/hypertrack/views-react/static/css/main.e32370c4.chunk.css",
-    "main.js": "/hypertrack/views-react/static/js/main.fc6b8cdd.chunk.js",
-    "main.js.map": "/hypertrack/views-react/static/js/main.fc6b8cdd.chunk.js.map",
-    "runtime~main.js": "/hypertrack/views-react/static/js/runtime~main.debda8bc.js",
-    "runtime~main.js.map": "/hypertrack/views-react/static/js/runtime~main.debda8bc.js.map",
-    "static/css/2.93e9ecf4.chunk.css": "/hypertrack/views-react/static/css/2.93e9ecf4.chunk.css",
-    "static/js/2.4911abf0.chunk.js": "/hypertrack/views-react/static/js/2.4911abf0.chunk.js",
-    "static/js/2.4911abf0.chunk.js.map": "/hypertrack/views-react/static/js/2.4911abf0.chunk.js.map",
-    "index.html": "/hypertrack/views-react/index.html",
-    "precache-manifest.834cc9ce590deaf6a29e9092d8229709.js": "/hypertrack/views-react/precache-manifest.834cc9ce590deaf6a29e9092d8229709.js",
-    "service-worker.js": "/hypertrack/views-react/service-worker.js",
-    "static/css/2.93e9ecf4.chunk.css.map": "/hypertrack/views-react/static/css/2.93e9ecf4.chunk.css.map",
-    "static/css/main.e32370c4.chunk.css.map": "/hypertrack/views-react/static/css/main.e32370c4.chunk.css.map"
+    "main.css": "/hypertrack/views-react/sample/static/css/main.e32370c4.chunk.css",
+    "main.js": "/hypertrack/views-react/sample/static/js/main.dcbfd33a.chunk.js",
+    "main.js.map": "/hypertrack/views-react/sample/static/js/main.dcbfd33a.chunk.js.map",
+    "runtime~main.js": "/hypertrack/views-react/sample/static/js/runtime~main.0fa989cf.js",
+    "runtime~main.js.map": "/hypertrack/views-react/sample/static/js/runtime~main.0fa989cf.js.map",
+    "static/css/2.93e9ecf4.chunk.css": "/hypertrack/views-react/sample/static/css/2.93e9ecf4.chunk.css",
+    "static/js/2.045fa5ef.chunk.js": "/hypertrack/views-react/sample/static/js/2.045fa5ef.chunk.js",
+    "static/js/2.045fa5ef.chunk.js.map": "/hypertrack/views-react/sample/static/js/2.045fa5ef.chunk.js.map",
+    "index.html": "/hypertrack/views-react/sample/index.html",
+    "precache-manifest.cfecfb98c9d97c9a6a7b62ed49b92b21.js": "/hypertrack/views-react/sample/precache-manifest.cfecfb98c9d97c9a6a7b62ed49b92b21.js",
+    "service-worker.js": "/hypertrack/views-react/sample/service-worker.js",
+    "static/css/2.93e9ecf4.chunk.css.map": "/hypertrack/views-react/sample/static/css/2.93e9ecf4.chunk.css.map",
+    "static/css/main.e32370c4.chunk.css.map": "/hypertrack/views-react/sample/static/css/main.e32370c4.chunk.css.map"
   }
 }
