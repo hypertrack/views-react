@@ -138,6 +138,7 @@ const Map = props => {
     showTooltips
   } = props
   const [follow, setFollow] = useState({})
+  const [currentLayer, setCurrentLayer] = useState(null)
 
   const mapRef = useRef(null)
   const mainClusterLayer = useRef(null) // main cluster layer
@@ -269,6 +270,23 @@ const Map = props => {
 
   useLayoutEffect(
     () => {
+      const layer = Leaflet.tileLayer(selectedMapLayerState.selectedLayer, {
+        attribution:
+          '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        key: CONSTANTS.MAPTILER_KEY,
+        tileSize: selectedMapLayerState.selectedLayer.includes('maptiler')
+          ? 1024
+          : 512,
+        zoomOffset: selectedMapLayerState.selectedLayer.includes('maptiler')
+          ? -2
+          : -1,
+        detectRetina: true,
+        minZoom: minZoom,
+        minNativeZoom: minZoom + 1,
+        maxNativeZoom: 21,
+        maxZoom: 21
+      })
+      setCurrentLayer(layer)
       mapRef.current = Leaflet.map('map', {
         center,
         zoom,
@@ -280,24 +298,7 @@ const Map = props => {
         animate: true,
         attributionControl: false,
         updateWhenZooming: true,
-        layers: [
-          Leaflet.tileLayer(selectedMapLayerState.selectedLayer, {
-            attribution:
-              '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            key: CONSTANTS.MAPTILER_KEY,
-            tileSize: selectedMapLayerState.selectedLayer.includes('maptiler')
-              ? 1024
-              : 512,
-            zoomOffset: selectedMapLayerState.selectedLayer.includes('maptiler')
-              ? -2
-              : -1,
-            detectRetina: true,
-            minZoom: minZoom,
-            minNativeZoom: minZoom + 1,
-            maxNativeZoom: 21,
-            maxZoom: 21
-          })
-        ]
+        layers: [layer]
       })
       mapRef.current.on('dragend', () => {
         setFollow({})
@@ -360,6 +361,36 @@ const Map = props => {
         if (mainClusterLayer && mainClusterLayer.current)
           mainClusterLayer.current.remove()
         if (mapRef && mapRef.current) mapRef.current.remove()
+      }
+    },
+    [] // eslint-disable-line
+  )
+  useLayoutEffect(
+    () => {
+      if (mapRef && mapRef.current) {
+        console.log(mapRef.current._layers)
+        if (currentLayer) mapRef.current.removeLayer(currentLayer)
+        const newLayer = Leaflet.tileLayer(
+          selectedMapLayerState.selectedLayer,
+          {
+            attribution:
+              '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            key: CONSTANTS.MAPTILER_KEY,
+            tileSize: selectedMapLayerState.selectedLayer.includes('maptiler')
+              ? 1024
+              : 512,
+            zoomOffset: selectedMapLayerState.selectedLayer.includes('maptiler')
+              ? -2
+              : -1,
+            detectRetina: true,
+            minZoom: minZoom,
+            minNativeZoom: minZoom + 1,
+            maxNativeZoom: 21,
+            maxZoom: 21
+          }
+        )
+        mapRef.current.addLayer(newLayer)
+        setCurrentLayer(newLayer)
       }
     },
     [selectedMapLayerState] // eslint-disable-line
