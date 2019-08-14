@@ -102,12 +102,11 @@ There are different ways to obtain and/or generate a custom layer. [OpenMapTiles
 
 Here are some sample layer tiles:
 
-| Layer                        | URL                                                         | Preview |
-| ---------------------------- | ----------------------------------------------------------- | ------- |
-| Google Maps: Satellite       | `http://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}`         |         |
-| Google Maps: Roadmap/Streets | `http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}`   |         |
-| Google Maps: Hybrid          | `http://mt0.google.com/vt/lyrs=s,h&hl=en&x={x}&y={y}&z={z}` |         |
-| Google Maps: Terrain         | `http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}`   |         |
+| Layer                        | URL                                                         | Preview                                                                   |
+| ---------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Google Maps: Satellite       | `http://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}`         | <img src="public/satellite-map.png" alt="satellite preview" width="150"/> |
+| Google Maps: Roadmap/Streets | `http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}`   | <img src="public/streets-map.png" alt="streets preview" width="150"/>     |
+| Google Maps: Hybrid          | `http://mt0.google.com/vt/lyrs=s,h&hl=en&x={x}&y={y}&z={z}` | <img src="public/hybrid-map.png" alt="hybrid preview" width="150"/>       |
 
 #### Replacing default icons
 
