@@ -50,9 +50,17 @@ const LiveViewContainer = props => {
   const [viewport, setViewport] = React.useState({})
   React.useEffect(
     () => {
-      dispatch({
-        type: CONSTANTS.tileLayers[defaultLayer]
-      })
+      console.log(defaultLayer)
+      if (defaultLayer !== 'custom') {
+        dispatch({
+          type: defaultLayer
+        })
+      } else {
+        dispatch({
+          type: 'custom',
+          data: customLayerUrl
+        })
+      }
     },
     [defaultLayer]
   )
