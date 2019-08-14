@@ -135,7 +135,7 @@ const Map = props => {
     devices,
     zoom,
     setSelectedDeviceForSingleDeviceView,
-    isTooltipsShown
+    showTooltips
   } = props
   const [follow, setFollow] = useState({})
 
@@ -201,7 +201,7 @@ const Map = props => {
       offset: new Leaflet.point(5, 15),
       direction: 'bottom',
       className: 'ht-tooltip-enable',
-      permanent: isTooltipsShown
+      permanent: showTooltips
     })
   }
 
@@ -510,7 +510,7 @@ const Map = props => {
   useEffect(
     () => {
       for (let x in devices) {
-        if (isTooltipsShown) {
+        if (showTooltips) {
           // devicesObj[devices[x].device_id].getTooltip().options.className =
           //   'ht-tooltip-enable'
           devicesObj[devices[x].device_id].openTooltip()
@@ -527,12 +527,12 @@ const Map = props => {
           //   'ht-tooltip-disable'
           devicesObj[devices[x].device_id].closeTooltip()
         }
-        // else if (devices[x].name && !isTooltipsShown) {
+        // else if (devices[x].name && !showTooltips) {
         //   devicesObj[devices[x].device_id].unbindTooltip()
         // }
       }
     },
-    [isTooltipsShown, devices]
+    [showTooltips, devices]
   )
 
   return <div ref={mapRef} id="map" className="account-map-container" />

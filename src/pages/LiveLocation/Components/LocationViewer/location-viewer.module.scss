@@ -8,7 +8,7 @@
 }
 
 .cardWrapper {
-  position: fixed;
+  position: absolute;
   margin-top: setSpace(8);
   left: $space--6x;
   z-index: 12;

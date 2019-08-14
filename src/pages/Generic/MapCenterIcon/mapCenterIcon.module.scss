@@ -1,7 +1,7 @@
 @import '../../../theme/movement.scss';
 
 .mapCenterIcon {
-  position: fixed;
+  position: absolute;
   height: 30px;
   width: 30px;
   bottom: $space--double;

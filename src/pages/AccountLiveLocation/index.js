@@ -24,8 +24,8 @@ const AccountLiveLocationContainer = ({
   setSelectedDeviceForSingleDeviceView,
   selectedMapLayerState,
   setSelectedMapLayer,
-  isDeviceListShown,
-  isTooltipsShown
+  showDeviceList,
+  showTooltips
 }) => {
   return (
     <Query
@@ -66,8 +66,8 @@ const AccountLiveLocationContainer = ({
             accountId={data.listPublicDevicesStatus[0].account_id} // TODO we need to rethink this
             isWidget={isWidget}
             customLayerUrl={customLayerUrl}
-            isDeviceListShown={isDeviceListShown}
-            isTooltipsShown={isTooltipsShown}
+            showDeviceList={showDeviceList}
+            showTooltips={showTooltips}
             layerType={layerType}
             layerTypes={layerTypes}
             selectedDeviceForSingleDeviceView={

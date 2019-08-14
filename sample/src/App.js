@@ -33,8 +33,8 @@ class App extends React.Component {
       publishableKey=${process.env.REACT_APP_PUBLISHABLE_KEY ||
         PUBLISHABLE_KEY ||
         ""}
-      isTooltipsShown=false
-      isDeviceListShown=false
+      showTooltips=false
+      showDeviceList=false
       selectedDeviceId=""
       defaultLayer="base"
       customLayerUrl=""
@@ -124,8 +124,8 @@ class App extends React.Component {
     this.setState({
       code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
       publishableKey=${this.state.publishableKey}
-      isTooltipsShown=${this.state.tooltip}
-      isDeviceListShown=${this.state.deviceList}
+      showTooltips=${this.state.tooltip}
+      showDeviceList=${this.state.deviceList}
       selectedDeviceId="${this.state.deviceId}"
       defaultLayer="${this.state.defaultLayer}"
       customLayerUrl="${this.state.customLayerUrl}"
@@ -157,8 +157,8 @@ class App extends React.Component {
                 <Col span={20} offset={2}>
                   <LiveView
                     publishableKey={this.state.publishableKey}
-                    isTooltipsShown={this.state.tooltip}
-                    isDeviceListShown={this.state.deviceList}
+                    showTooltips={this.state.tooltip}
+                    showDeviceList={this.state.deviceList}
                     selectedDeviceId={this.state.deviceId}
                     defaultLayer={this.state.defaultLayer}
                     customLayerUrl={this.state.customLayerUrl}

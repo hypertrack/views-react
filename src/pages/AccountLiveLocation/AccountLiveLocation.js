@@ -32,8 +32,8 @@ const AccountLiveLocation = ({
   setSelectedDeviceForSingleDeviceView,
   selectedMapLayerState,
   setSelectedMapLayer,
-  isDeviceListShown,
-  isTooltipsShown
+  showDeviceList,
+  showTooltips
 }) => {
   const [selectedDeviceId, setSelectedDeviceId] = useState(null)
   // const [tooltipSwitch, setTooltipSwitch] = React.useState(false)
@@ -80,7 +80,7 @@ const AccountLiveLocation = ({
               setSelectedMapLayer={setSelectedMapLayer}
               customLayerUrl={customLayerUrl}
             />
-            <If condition={Boolean(isDeviceListShown)}>
+            <If condition={Boolean(showDeviceList)}>
               <Then>
                 <DeviceList
                   assetsUrl={assetsUrl}
@@ -104,7 +104,7 @@ const AccountLiveLocation = ({
                 devicesMap={devicesMap}
                 devices={devices}
                 isWidget={isWidget}
-                isTooltipsShown={isTooltipsShown}
+                showTooltips={showTooltips}
                 setSelectedDeviceForSingleDeviceView={
                   setSelectedDeviceForSingleDeviceView
                 }

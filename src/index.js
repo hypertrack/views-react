@@ -58,8 +58,8 @@ if (process.env.REACT_APP_PUBLISHABLE_KEY) {
         publishableKey={
           'uvIAA8xJANxUxDgINOX62-LINLuLeymS6JbGieJ9PegAPITcr9fgUpROpfSMdL9kv-qFjl17NeAuBHse8Qu9sw'
         }
-        isTooltipsShown={false}
-        isDeviceListShown={false}
+        showTooltips={false}
+        showDeviceList={false}
         className="testClass"
         defaultLayer={'custom'}
         customLayerUrl={'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'}

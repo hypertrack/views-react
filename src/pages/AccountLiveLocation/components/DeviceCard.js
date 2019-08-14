@@ -10,7 +10,6 @@ const DeviceCard = ({
   device,
   setSelectedDeviceId,
   setIsTooltipsShown,
-  isTooltipsShown,
   isWidget,
   onClickHandler
 }) => {

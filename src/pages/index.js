@@ -31,8 +31,8 @@ const LiveViewContainer = props => {
     defaultLayer,
     publishableKey,
     customLayerUrl,
-    isDeviceListShown,
-    isTooltipsShown,
+    showDeviceList,
+    showTooltips,
     selectedDeviceId
   } = props
   const initialState =
@@ -90,8 +90,8 @@ const LiveViewContainer = props => {
               path="devices"
               publishableKey={publishableKey}
               isWidget={true}
-              isDeviceListShown={isDeviceListShown}
-              isTooltipsShown={isTooltipsShown}
+              showDeviceList={showDeviceList}
+              showTooltips={showTooltips}
               customLayerUrl={customLayerUrl}
               selectedDeviceForSingleDeviceView={
                 selectedDeviceForSingleDeviceView
@@ -118,8 +118,8 @@ LiveViewContainer.propTypes = {
   customLayerUrl: PropTypes.string,
 
   defaultLayer: PropTypes.oneOf(['base', 'street', 'satellite', 'custom']),
-  isDeviceListShown: PropTypes.bool,
-  isTooltipsShown: PropTypes.bool
+  showDeviceList: PropTypes.bool,
+  showTooltips: PropTypes.bool
 }
 
 LiveViewContainer.defaultProps = {
@@ -128,6 +128,6 @@ LiveViewContainer.defaultProps = {
       'https://api.maptiler.com/maps/voyager/{z}/{x}/{y}@2x.png?key={key}',
     name: 'base'
   },
-  isDeviceListShown: true,
-  isTooltipsShown: false
+  showDeviceList: true,
+  showTooltips: false
 }
