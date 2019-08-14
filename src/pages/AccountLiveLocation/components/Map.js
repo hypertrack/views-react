@@ -368,7 +368,6 @@ const Map = props => {
   useLayoutEffect(
     () => {
       if (mapRef && mapRef.current) {
-        console.log(mapRef.current._layers)
         if (currentLayer) mapRef.current.removeLayer(currentLayer)
         const newLayer = Leaflet.tileLayer(
           selectedMapLayerState.selectedLayer,
