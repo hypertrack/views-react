@@ -31,14 +31,14 @@ npm i
 yarn
 ```
 
-> Note: Do not run the installation in the root folder. If that has been done before sample app dependecies were installed, NPM will use installed packages from the root node_modules and might reason conflicts breaking the build process.
+> Note: Do not run the installation in the root folder. If that has been done before sample app dependecies were installed, NPM will use installed packages from the root node_modules, which might reason conflicts and break the build process
 
-Run the sample app with your own Publishable Key:
+Run the sample app:
 
 ```shell
-REACT_APP_PUBLISHABLE_KEY=<your_key> node run start
+node run start
 
-REACT_APP_PUBLISHABLE_KEY=<your_key> yarn start
+yarn start
 ```
 
 The CLI will open up the locally hosted sample app (`http://localhost:3000/`) and should look like this:
