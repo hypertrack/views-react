@@ -192,6 +192,7 @@ class App extends React.Component {
                       <a
                         href="https://dashboard.hypertrack.com/setup"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Get it from the HyperTrack Dashboard
                       </a>
