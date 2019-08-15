@@ -88,7 +88,7 @@ const PUBLISHABLE_KEY = "<your_key>";
 
 > Note: The component passes along all additional properties, so you can use properties like `className`.
 
-### Showing a single device
+#### Showing a single device
 
 When provided with the `selectedDeviceId` property, the component will render a single device view as opposed to the device overview. You can find more details in the [Live device view documentation](https://docs.hypertrack.com/#live-device-view).
 
