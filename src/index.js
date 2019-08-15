@@ -60,11 +60,11 @@ if (process.env.REACT_APP_PUBLISHABLE_KEY) {
         }
         showTooltips={false}
         showDeviceList={false}
-        showDeviceCard={false}
+        showDeviceCard={true}
         className="testClass"
         defaultLayer={'custom'}
         customLayerUrl={'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'}
-        assetsUrl={'https://abc-sdk-test-assets.s3-us-west-2.amazonaws.com/'}
+        assetsUrl={''}
       />
     </div>,
     document.getElementById('root')

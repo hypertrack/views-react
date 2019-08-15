@@ -1,8 +1,8 @@
 import React from 'react'
 import { dateUtils } from './../../../common'
-import constants from '../../../constants'
+import CONSTANTS from '../../../constants'
 
-const getOutageMessage = (val = '') => constants.outageMessageMap[val]
+const getOutageMessage = (val = '') => CONSTANTS.outageMessageMap[val]
 
 export const customPopup = (
   id,
@@ -24,14 +24,14 @@ export const customPopup = (
           <td className="emptyCell" />
           <td className="popupTableRowContent">{device_status}</td>
         </tr>
-        {device_status === constants.movementStatus.inactive ? (
+        {device_status === CONSTANTS.movementStatus.inactive ? (
           <tr className="popupTableRow">
             <td className="popupTableRowHeader">Outage</td>
             <td className="emptyCell" />
             <td className="popupTableRowContent error">
               {getOutageMessage(
                 healthData ? healthData.value || healthData.hint : ''
-              )}
+              ) || 'unknown'}
             </td>
           </tr>
         ) : null}

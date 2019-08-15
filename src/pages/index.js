@@ -36,7 +36,11 @@ const LiveViewContainer = props => {
     selectedDeviceId
   } = props
   const assetsUrl =
-    props.assetsUrl.substr(-1) !== '/' ? props.assetsUrl + '/' : props.assetsUrl
+    props.assetsUrl && props.assetsUrl !== ''
+      ? props.assetsUrl.substr(-1) !== '/'
+        ? props.assetsUrl + '/'
+        : props.assetsUrl
+      : null
   const initialState =
     defaultLayer !== 'custom'
       ? CONSTANTS.tileLayers[defaultLayer]

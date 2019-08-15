@@ -12,13 +12,14 @@
   margin-top: setSpace(8);
   left: $space--6x;
   z-index: 12;
+  height: 80%;
+  overflow-y: scroll;
   @media screen and (max-width: 500px) {
     bottom: 0px;
     left: 0;
     width: 100%;
     margin-top: unset;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    overflow-y: scroll;
   }
   &.isWidget {
     margin-top: setSpace(12);
