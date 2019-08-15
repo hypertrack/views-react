@@ -156,8 +156,6 @@ class App extends React.Component {
 
     const layerOptions = ["base", "street", "satellite", "custom"];
 
-    console.log(this.state);
-
     return (
       <div className="App">
         <Layout>
