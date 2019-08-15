@@ -34,6 +34,7 @@ const LiveLocationContainer = props => {
       fetchPolicy="no-cache"
     >
       {({ data, error, loading }) => {
+        console.log(data, error, loading)
         if (loading) return <PageLoader />
         if (error) return <ErrorState />
         if (data && !data.getPublicDeviceStatus) return <WrongKey />

@@ -61,10 +61,10 @@ if (process.env.REACT_APP_PUBLISHABLE_KEY) {
         showTooltips={false}
         showDeviceList={false}
         showDeviceCard={true}
+        selectedDeviceId={'FA611BAC-A087-4576-A13D-98502DF0F32'}
         className="testClass"
         defaultLayer={'custom'}
         customLayerUrl={'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'}
-        assetsUrl={''}
       />
     </div>,
     document.getElementById('root')

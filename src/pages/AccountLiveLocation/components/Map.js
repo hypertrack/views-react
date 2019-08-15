@@ -271,8 +271,6 @@ const Map = props => {
   useLayoutEffect(
     () => {
       const layer = Leaflet.tileLayer(selectedMapLayerState.selectedLayer, {
-        attribution:
-          '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         key: CONSTANTS.MAPTILER_KEY,
         tileSize: selectedMapLayerState.selectedLayer.includes('maptiler')
           ? 1024
@@ -286,7 +284,7 @@ const Map = props => {
         maxNativeZoom: 21,
         maxZoom: 21
       })
-      setCurrentLayer(layer)
+      setCurrentLayer(layer) //setting current layer
       mapRef.current = Leaflet.map('map', {
         center,
         zoom,
@@ -368,12 +366,9 @@ const Map = props => {
   useLayoutEffect(
     () => {
       if (mapRef && mapRef.current) {
-        if (currentLayer) mapRef.current.removeLayer(currentLayer)
         const newLayer = Leaflet.tileLayer(
           selectedMapLayerState.selectedLayer,
           {
-            attribution:
-              '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             key: CONSTANTS.MAPTILER_KEY,
             tileSize: selectedMapLayerState.selectedLayer.includes('maptiler')
               ? 1024
@@ -389,6 +384,7 @@ const Map = props => {
           }
         )
         mapRef.current.addLayer(newLayer)
+        if (currentLayer) mapRef.current.removeLayer(currentLayer)
         setCurrentLayer(newLayer)
       }
     },

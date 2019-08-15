@@ -56,7 +56,7 @@ export const parseDeviceStatusResponse = deviceStatus => {
   }
 }
 
-export const ErrorState = ({ error, empty }) => (
+export const ErrorState = ({ error, empty, assetsUrl }) => (
   <div className={styles.errorMessage}>
     <p>Could not get the latest location</p>
     <p>
@@ -69,7 +69,7 @@ export const ErrorState = ({ error, empty }) => (
       </a>
     </p>
     <img
-      src={`${process.env.PUBLIC_URL}/assets/error.png`}
+      src={`${CONSTANTS.assetsUrl}error.png`}
       alt={'Could not get the latest location'}
     />
   </div>
