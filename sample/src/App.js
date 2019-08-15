@@ -23,26 +23,18 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      tooltip: false,
-      deviceList: false,
-      deviceCard: false,
+      tooltip: true,
+      deviceList: true,
+      deviceCard: true,
       publishableKey: process.env.REACT_APP_PUBLISHABLE_KEY || PUBLISHABLE_KEY,
       defaultLayer: "base",
       deviceId: "",
       customLayerUrl: "",
       assetsUrl: "",
-      code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
-      publishableKey={"${process.env.REACT_APP_PUBLISHABLE_KEY ||
+      code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView\n\tpublishableKey="${process
+        .env.REACT_APP_PUBLISHABLE_KEY ||
         PUBLISHABLE_KEY ||
-        ""}"}
-      showTooltips={false}
-      showDeviceList={false}
-      showDeviceCard={false}
-      selectedDeviceId={""}
-      defaultLayer={"base"}
-      customLayerUrl={""}
-      assetsUrl={""}
-    />`
+        ""}"\n/>`
     };
   }
 
@@ -135,17 +127,42 @@ class App extends React.Component {
   }
 
   updateCode() {
+    let code = `import { LiveView } from "hypertrack-views-react";\n\n<LiveView \n\tpublishableKey="${
+      this.state.publishableKey
+    }"\n`;
+
+    if (!this.state.tooltip) {
+      code += `\tshowTooltips={${this.state.tooltip}}\n`;
+    }
+
+    if (!this.state.deviceList) {
+      code += `\tshowDeviceList={${this.state.deviceList}}\n`;
+    }
+
+    if (!this.state.deviceCard) {
+      code += `\tshowDeviceCard={${this.state.deviceCard}}\n`;
+    }
+
+    if (this.state.deviceId !== "") {
+      code += `\tselectedDeviceId="${this.state.deviceId}"\n`;
+    }
+
+    if (this.state.defaultLayer !== "base") {
+      code += `\tdefaultLayer="${this.state.defaultLayer}"\n`;
+    }
+
+    if (this.state.customLayerUrl !== "") {
+      code += `\tcustomLayerUrl="${this.state.customLayerUrl}"\n`;
+    }
+
+    if (this.state.assetsUrl !== "") {
+      code += `\tassetsUrl="${this.state.assetsUrl}"\n`;
+    }
+
+    code += `/>`;
+
     this.setState({
-      code: `import { LiveView } from "hypertrack-views-react";\n\n<LiveView
-      publishableKey={"${this.state.publishableKey}"}
-      showTooltips={${this.state.tooltip}}
-      showDeviceList={${this.state.deviceList}}
-      showDeviceCard={${this.state.deviceCard}}
-      selectedDeviceId={"${this.state.deviceId}"}
-      defaultLayer={"${this.state.defaultLayer}"}
-      customLayerUrl={"${this.state.customLayerUrl}"}
-      assetsUrl={"${this.state.assetsUrl}"}
-    />`
+      code
     });
   }
 
@@ -199,13 +216,22 @@ class App extends React.Component {
               <Col span={9} offset={2}>
                 <Form layout="vertical">
                   <Form.Item label="View Options">
-                    <Checkbox onChange={() => this.setTooltip()}>
+                    <Checkbox
+                      checked={this.state.tooltip}
+                      onChange={() => this.setTooltip()}
+                    >
                       Show tooltips
                     </Checkbox>
-                    <Checkbox onChange={() => this.setDeviceList()}>
+                    <Checkbox
+                      checked={this.state.deviceList}
+                      onChange={() => this.setDeviceList()}
+                    >
                       Show device list
                     </Checkbox>
-                    <Checkbox onChange={() => this.setDeviceCard()}>
+                    <Checkbox
+                      checked={this.state.deviceCard}
+                      onChange={() => this.setDeviceCard()}
+                    >
                       Show device card
                     </Checkbox>
                   </Form.Item>
