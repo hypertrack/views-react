@@ -4,12 +4,12 @@ import gql from 'graphql-tag'
 
 import AccountLiveLocation from './AccountLiveLocation'
 import { PageLoader } from './../Generic'
-import { listPublicDevicesStatusQuery } from './../../graphql/queries'
+import { listPublicMovementStatusQuery } from './../../graphql/queries'
 import { getDeviceListMap, getDeviceListOrder } from './source'
 import { EmptyState, ErrorState, WrongKey } from './components'
 
-const getPublicListDevicesStatus = gql`
-  ${listPublicDevicesStatusQuery}
+const listPublicMovementStatus = gql`
+  ${listPublicMovementStatusQuery}
 `
 
 const AccountLiveLocationContainer = ({
@@ -29,15 +29,15 @@ const AccountLiveLocationContainer = ({
 }) => {
   return (
     <Query
-      query={getPublicListDevicesStatus}
-      variables={{ publishableKey, isWidget }}
+    query={listPublicMovementStatus}
+      variables={{ publishableKey }}
       fetchPolicy="no-cache"
       notifyOnNetworkStatusChange={true} //will test this as Socket closing issue remedy
     >
       {({ loading, error, data }) => {
         if (loading) return <PageLoader />
         if (
-          (data && data.listPublicDevicesStatus === null) ||
+          (data && data.listPublicMovementStatus === null) ||
           !publishableKey ||
           publishableKey === ''
         )
@@ -49,22 +49,21 @@ const AccountLiveLocationContainer = ({
         if (
           !(
             data &&
-            data.listPublicDevicesStatus &&
-            data.listPublicDevicesStatus.length
+            data.listPublicMovementStatus &&
+            data.listPublicMovementStatus.length
           )
         )
           return <EmptyState />
-        console.log(assetsUrl)
         return (
           <AccountLiveLocation
             assetsUrl={assetsUrl}
             initialDeviceListOrder={getDeviceListOrder(
-              data.listPublicDevicesStatus
+              data.listPublicMovementStatus
             )}
             initialDeviceListMap={getDeviceListMap(
-              data.listPublicDevicesStatus
+              data.listPublicMovementStatus
             )}
-            accountId={data.listPublicDevicesStatus[0].account_id} // TODO we need to rethink this
+            accountId={data.listPublicMovementStatus[0].account_id} // TODO we need to rethink this
             isWidget={isWidget}
             customLayerUrl={customLayerUrl}
             showDeviceList={showDeviceList}

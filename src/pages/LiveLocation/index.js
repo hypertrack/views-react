@@ -2,14 +2,14 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import { getPublicDeviceStatus } from './../../graphql/queries'
+import { getPublicMovementStatus } from './../../graphql/queries'
 // import CONSTANTS from './../../constants'
 import LiveLocation from './LiveLocation'
 import { PageLoader, WrongKey } from './../Generic'
 import { ErrorState } from './source'
 
 const getPublicDeviceStatusQuery = gql`
-  ${getPublicDeviceStatus}
+  ${getPublicMovementStatus}
 `
 
 const LiveLocationContainer = props => {
@@ -34,7 +34,6 @@ const LiveLocationContainer = props => {
       fetchPolicy="no-cache"
     >
       {({ data, error, loading }) => {
-        console.log(data, error, loading)
         if (loading) return <PageLoader />
         if (error) return <ErrorState />
         if (data && !data.getPublicDeviceStatus) return <WrongKey />

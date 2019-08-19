@@ -11,11 +11,34 @@
     "pkApi": "api-key",
     "webhooks": "webhook-config"
   },
+  "distanceNotations": {
+    "speed": {
+      "metric": "kph",
+      "imperial": "mph"
+    },
+    "distance": {
+      "metric": "km",
+      "imperial": "mi"
+    }
+  },
   "HT_SF": [-122.4008685, 37.794993],
   "movementStatus": {
     "active": "active",
     "inactive": "inactive",
     "disconnected": "disconnected"
+  },
+  "tripStatus": {
+    "active": "active",
+    "completed": "completed"
+  },
+  "inactiveReason": {
+    "locationPermissionsDenied": "locationPermissionsDenied",
+    "motionActivityPermissionsDenied": "motionActivityPermissionsDenied",
+    "locationServicesDisabled": "locationServicesDisabled",
+    "motionActivityServicesDisabled": "motionActivityServicesDisabled",
+    "motionActivityServicesUnavailable": "motionActivityServicesUnavailable",
+    "stoppedProgrammatically": "stoppedProgrammatically",
+    "unknown": "unknown"
   },
   "htEvent": {
     "activity": {
@@ -38,7 +61,7 @@
       "low_power_mode_on": "battery.low_power_mode_on"
     },
     "health": {
-      "change": "health"
+      "change": "change"
     },
     "location": {
       "change": "location",
@@ -69,7 +92,8 @@
       "hardware": "resumption.hardware",
       "network": "resumption.network",
       "resumed": "resumption.resumed",
-      "software": "resumption.software"
+      "software": "resumption.software",
+      "started": "resumption.started"
     },
     "status": {
       "update": "status.update"

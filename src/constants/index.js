@@ -61,14 +61,24 @@ const outageMessageMap = {
 }
 
 const statusMessageMap = {
-  [APP_CONSTANTS.htEvent.battery.back_to_normal]: 'Battery back to normal',
+  [APP_CONSTANTS.htEvent.battery.normal]: 'Battery back to normal',
   [APP_CONSTANTS.htEvent.battery.charging]: 'Battery charging',
-  [APP_CONSTANTS.htEvent.battery.discharging]: 'Battery discharging',
-  [APP_CONSTANTS.htEvent.battery.low]: 'Battery low',
-  [APP_CONSTANTS.htEvent.battery.low_power_mode_off]: 'Low power mode off',
-  [APP_CONSTANTS.htEvent.battery.low_power_mode_on]: 'Low power mode on',
-  [APP_CONSTANTS.htEvent.network.disconnected]: 'Network disconnected',
-  [APP_CONSTANTS.htEvent.network.reconnected]: 'Network reconnected'
+  [APP_CONSTANTS.htEvent.battery.low]: 'Battery low'
+}
+
+const newMovementStatusMessage = {
+  [APP_CONSTANTS.movementStatus.disconnected]: 'Device disconncted',
+  [APP_CONSTANTS.inactiveReason.locationPermissionsDenied]:
+    'Location permission denied',
+  [APP_CONSTANTS.inactiveReason.locationServicesDisabled]: 'Location disabled',
+  [APP_CONSTANTS.inactiveReason.motionActivityPermissionsDenied]:
+    'Activity permission denied',
+  [APP_CONSTANTS.inactiveReason.motionActivityServicesDisabled]:
+    'Activity disabled',
+  [APP_CONSTANTS.inactiveReason.motionActivityServicesUnavailable]:
+    'Activity not supported',
+  [APP_CONSTANTS.inactiveReason.stoppedProgrammatically]: 'Tracking stopped',
+  [APP_CONSTANTS.inactiveReason.unknown]: 'Unknown'
 }
 
 const usTimeZones = {
@@ -107,6 +117,7 @@ export default {
   outageMessageMap,
   statusMessageMap,
   usTimeZones,
+  newMovementStatusMessage,
   ...APP_CONSTANTS,
   ...CONSTANTS
 }

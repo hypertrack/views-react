@@ -1,66 +1,55 @@
 import gql from 'graphql-tag'
 
-export const subscriptionQuery = gql`
-  subscription subscribeToDeviceEvent($device_id: String) {
-    subscribeToDeviceEvent(device_id: $device_id) {
-      device_id
-      recorded_at
-      type
-      data
-    }
-  }
-`
-
 export const accountSubscription = gql`
-  subscription subscribeToDeviceStatus($accountId: String) {
-    subscribeToDeviceStatus(account_id: $accountId) {
+  subscription subscribeToMovementStatus($accountId: String) {
+    subscribeToMovementStatus(account_id: $accountId) {
       account_id
       device_id
+      device_status {
+        value
+      }
       location {
+        accuracy
+        geometry {
+          coordinates
+        }
+        bearing
+        speed
         recorded_at
-        data
       }
-      activity {
-        recorded_at
-        data
-      }
-      health {
-        recorded_at
-        data
-      }
-      device_status
-      device_info {
-        name
-      }
-      online
-      session_started_at
     }
   }
 `
 
 export const deviceSubscription = gql`
-  subscription subscribeToDeviceStatus($deviceId: String) {
-    subscribeToDeviceStatus(device_id: $deviceId) {
+  subscription subscribeToMovementStatus($deviceId: String) {
+    subscribeToMovementStatus(device_id: $deviceId) {
       account_id
       device_id
       location {
+        accuracy
+        geometry {
+          coordinates
+        }
+        bearing
+        speed
         recorded_at
-        data
       }
-      activity {
-        recorded_at
-        data
+      device_status {
+        value
+        active {
+          activity
+          recorded_at
+        }
+        inactive {
+          reason
+          recorded_at
+        }
+        disconnected {
+          recorded_at
+        }
       }
-      health {
-        recorded_at
-        data
-      }
-      device_status
-      device_info {
-        name
-      }
-      online
-      session_started_at
+      battery
     }
   }
 `
@@ -84,10 +73,12 @@ export const subscribeToTrip = gql`
         }
       }
       estimate {
+        arrive_at
         reroutes_exceeded
         route {
           distance
           duration
+          remaining_duration
           start_address
           end_address
           polyline {

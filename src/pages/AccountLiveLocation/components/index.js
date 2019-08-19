@@ -43,7 +43,7 @@ const EmptyState = () => {
       </div>
       <img
         className={styles.emptyVector}
-        src={CONSTANTS.public_assets_url + 'no-devices.png'}
+        src={CONSTANTS.assetsUrl + 'no-devices.png'}
         alt="no-devices"
       />
     </div>

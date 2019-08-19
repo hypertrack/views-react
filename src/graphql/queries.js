@@ -124,34 +124,37 @@ export const getDeviceStatus = gql`
   }
 `
 
-export const getPublicDeviceStatus = gql`
-  query getPublicDeviceStatusQuery(
-    $publishableKey: String
-    $deviceId: String
-    $trackingId: String
-  ) {
-    getPublicDeviceStatus(
-      publishable_key: $publishableKey
-      device_id: $deviceId
-      tracking_id: $trackingId
-    ) {
+export const listPublicMovementStatusQuery = gql`
+  query listPublicMovementStatus($publishableKey: String!) {
+    listPublicMovementStatus(publishable_key: $publishableKey) {
       account_id
       device_id
-      location {
-        recorded_at
-        data
+      device_status {
+        value
+        active {
+          activity
+          recorded_at
+        }
+        inactive {
+          reason
+          recorded_at
+        }
+        disconnected {
+          recorded_at
+        }
       }
-      activity {
-        recorded_at
-        data
-      }
-      health {
-        recorded_at
-        data
-      }
-      device_status
       device_info {
         name
+        timezone
+      }
+      location {
+        accuracy
+        geometry {
+          coordinates
+        }
+        bearing
+        speed
+        recorded_at
       }
     }
   }
@@ -227,13 +230,42 @@ export const getPublicDeviceStatusWithTrip = gql`
   }
 `
 
-export const getPublicTrackingId = gql`
-  query getPublicTrackingIdQuery($publishableKey: String!, $deviceId: String!) {
-    getPublicTrackingId(
+export const getPublicMovementStatus = gql`
+  query getPublicMovementStatusQuery(
+    $publishableKey: String
+    $deviceId: String
+    $trackingId: String
+  ) {
+    getPublicMovementStatus(
       publishable_key: $publishableKey
       device_id: $deviceId
+      tracking_id: $trackingId
     ) {
-      tracking_id
+      account_id
+      device_id
+      location {
+        accuracy
+        geometry {
+          coordinates
+        }
+        bearing
+        speed
+        recorded_at
+      }
+      device_status {
+        value
+        active {
+          activity
+          recorded_at
+        }
+        inactive {
+          reason
+          recorded_at
+        }
+        disconnected {
+          recorded_at
+        }
+      }
     }
   }
 `

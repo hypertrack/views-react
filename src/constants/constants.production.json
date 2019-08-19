@@ -5,11 +5,6 @@
     "graphqlEndpoint": "https://7kcobbjpavdyhcxfvxrnktobjm.appsync-api.us-west-2.amazonaws.com/graphql",
     "region": "us-west-2"
   },
-  "fqdns": {
-    "dashboard": "localhost.localdomain",
-    "embed": "localhost.localdomain",
-    "track": "localhost.localdomain"
-  },
   "baseURL": "https://live-api.htprod.hypertrack.com",
   "buildCommit": "deadbeef"
 }

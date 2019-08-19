@@ -2,10 +2,10 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import Leaflet from 'leaflet'
 import { renderToString } from 'react-dom/server'
 
+import { utils } from './../../../common'
 import CONSTANTS from './../../../constants'
 import { Icon } from './../../Generic'
 import { customPopup } from './CustomPopup'
-import { parseSingleDeviceFromList } from './../source'
 
 import './accountMapstyles.scss'
 import 'leaflet/dist/leaflet.css'
@@ -165,9 +165,6 @@ const Map = props => {
   }
 
   const bindPopup = (leafletMarker, deviceData) => {
-    let reversedCoordinates = [
-      ...deviceData.location.data.location.coordinates
-    ].reverse()
     const popup = Leaflet.popup()
     leafletMarker.on('move', function() {
       try {
@@ -182,10 +179,10 @@ const Map = props => {
           deviceData.device_id,
           deviceData.device_status,
           deviceData.location,
-          deviceData.activity,
           deviceData.name,
-          reversedCoordinates,
-          deviceData.health.data
+          deviceData.timezone,
+          deviceData.location.geometry.coordinates,
+          deviceData.inactive,
         )
       )
     )
@@ -208,14 +205,14 @@ const Map = props => {
 
   const getVariant = deviceData => {
     return deviceData.device_status === CONSTANTS.movementStatus.active
-      ? deviceData.location.data.bearing
+      ? deviceData.location.bearing
         ? 'live-direction'
         : 'live'
       : 'offline'
   }
 
   const getIcon = deviceData => {
-    const bearing = deviceData.location.data.bearing
+    const bearing = deviceData.location.bearing
     const style = {
       transform: `rotate(${bearing || 0}deg)`,
       filter: `drop-shadow(0 0 1px #333)`,
@@ -245,13 +242,11 @@ const Map = props => {
     if (
       !(
         location &&
-        location.data &&
-        location.data.location &&
-        location.data.location.coordinates
-      )
+        location.geometry &&
+        location.geometry.coordinates )
     )
       return null
-    let reversedCoordinates = [...location.data.location.coordinates].reverse()
+    let reversedCoordinates = [...location.geometry.coordinates]
 
     const icon = getIcon(deviceData)
     const newMarker = Leaflet.marker(
@@ -436,7 +431,8 @@ const Map = props => {
 
   useLayoutEffect(
     () => {
-      const subscriptionDevice = parseSingleDeviceFromList(
+    if (subscriptionData && subscriptionData.device_id) {
+      const subscriptionDevice = utils.parseMovementStatus(
         subscriptionData,
         devicesMap[subscriptionData.device_id]
       )
@@ -445,10 +441,7 @@ const Map = props => {
         const existingDevice = devicesObj[subscriptionDevice.device_id]
         const location = subscriptionDevice.location
         if (
-          location &&
-          location.data &&
-          location.data.location &&
-          location.data.location.coordinates
+          location && location.geometry && location.geometry.coordinates
         ) {
           //bindPopup
           bindPopup(existingDevice, subscriptionDevice)
@@ -456,14 +449,14 @@ const Map = props => {
           //set new icon
           existingDevice.setIcon(getIcon(subscriptionDevice))
           //slide animation to new location
-          // activeClusterLayer.current.removeLayer(existingDevice)
-          // activeClusterLayer.current.addLayer(existingDevice)
+          activeClusterLayer.current.removeLayer(existingDevice)
+          activeClusterLayer.current.addLayer(existingDevice)
           try {
             existingDevice.slideTo(
               // this errors out when device_name changed through mobile SDK? Why?
               [
-                location.data.location.coordinates[1],
-                location.data.location.coordinates[0]
+                location.geometry.coordinates[0],
+                location.geometry.coordinates[1]
               ],
               {
                 duration: 2000,
@@ -529,13 +522,14 @@ const Map = props => {
         }
       }
       return () => {}
+      }
     },
     [subscriptionData] // eslint-disable-line
   )
 
   useEffect(
     () => {
-      for (let x in devices) {
+      for (let x in devices) { // eslint-disable-line
         if (showTooltips) {
           // devicesObj[devices[x].device_id].getTooltip().options.className =
           //   'ht-tooltip-enable'

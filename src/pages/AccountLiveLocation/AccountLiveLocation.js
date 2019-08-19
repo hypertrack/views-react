@@ -38,7 +38,6 @@ const AccountLiveLocation = ({
   const [selectedDeviceId, setSelectedDeviceId] = useState(null)
   // const [tooltipSwitch, setTooltipSwitch] = React.useState(false)
   // const [selectedMapLayerId, setSelectedMapLayerId] = React.useState(0)
-
   return (
     <Subscription
       variables={{ accountId, isWidget }}
@@ -47,18 +46,17 @@ const AccountLiveLocation = ({
       fetchPolicy="no-cache"
     >
       {({ error, data, loading }) => {
-        const subscribeToDeviceStatus =
-          error || loading ? {} : data.subscribeToDeviceStatus
+    const subscribeToMovementStatus =
+          error || loading ? {} : data.subscribeToMovementStatus
 
         const devicesMap = mergeSubDataIntoInitialData(
           initialDeviceListMap,
-          subscribeToDeviceStatus
+          subscribeToMovementStatus
         )
 
         const devices = initialDeviceListOrder.map(
           deviceId => devicesMap[deviceId]
         )
-
         return (
           <>
             {/*
@@ -98,7 +96,7 @@ const AccountLiveLocation = ({
             >
               <Map
                 assetsUrl={assetsUrl}
-                subscriptionData={subscribeToDeviceStatus}
+                subscriptionData={subscribeToMovementStatus}
                 selectedDeviceId={selectedDeviceId}
                 setSelectedDeviceId={setSelectedDeviceId}
                 devicesMap={devicesMap}
