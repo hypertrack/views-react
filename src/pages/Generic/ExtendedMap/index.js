@@ -93,7 +93,7 @@ const ExtendedMap = ({
   const { location, device_status } = locationProps
   // health, lastActivity
   const currentEventLocation =
-    location && location.coordinates ? location.coordinates : null
+    location && location.geometry ? location.geometry.coordinates : null
   const icon = IconFactory(locationProps, assetsUrl)
   const accuracy =
     device_status === constants.movementStatus.active && location

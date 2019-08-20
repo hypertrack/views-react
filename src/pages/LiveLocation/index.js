@@ -8,10 +8,6 @@ import LiveLocation from './LiveLocation'
 import { PageLoader, WrongKey } from './../Generic'
 import { ErrorState } from './source'
 
-const getPublicDeviceStatusQuery = gql`
-  ${getPublicMovementStatus}
-`
-
 const LiveLocationContainer = props => {
   const deviceId = props.selectedDeviceForSingleDeviceView
   const isWidget = true
@@ -29,17 +25,17 @@ const LiveLocationContainer = props => {
 
   return (
     <Query
-      query={getPublicDeviceStatusQuery}
+      query={getPublicMovementStatus}
       variables={{ deviceId, publishableKey, isWidget, trackingId }}
       fetchPolicy="no-cache"
     >
       {({ data, error, loading }) => {
         if (loading) return <PageLoader />
         if (error) return <ErrorState />
-        if (data && !data.getPublicDeviceStatus) return <WrongKey />
+        if (data && !data.getPublicMovementStatus) return <WrongKey />
         const device_id =
-          data && data.getPublicDeviceStatus
-            ? data.getPublicDeviceStatus.device_id
+          data && data.getPublicMovementStatus
+            ? data.getPublicMovementStatus.device_id
             : deviceId
         return (
           <LiveLocation
@@ -50,7 +46,7 @@ const LiveLocationContainer = props => {
             isTrackingLink={isTrackingLink}
             publishableKey={publishableKey}
             deviceId={device_id}
-            getDeviceStatus={data.getPublicDeviceStatus}
+            getMovementStatus={data.getPublicMovementStatus}
             setSelectedDeviceForSingleDeviceView={
               setSelectedDeviceForSingleDeviceView
             }

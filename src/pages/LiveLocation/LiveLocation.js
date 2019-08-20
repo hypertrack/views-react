@@ -1,20 +1,15 @@
 import React from 'react'
-import gql from 'graphql-tag'
 import { Subscription } from 'react-apollo'
 
-import { parseDeviceStatusResponse } from './source'
 import { deviceSubscription } from './../../graphql/subscriptions'
 import { LocationViewer } from './Components'
-
-const deviceLocationSubscription = gql`
-  ${deviceSubscription}
-`
+import { utils } from '../../common'
 
 const LiveLocationLoader = props => {
   const {
     assetsUrl,
     deviceId,
-    getDeviceStatus,
+    getMovementStatus,
     isWidget,
     routerLocation,
     isTrackingLink,
@@ -24,18 +19,20 @@ const LiveLocationLoader = props => {
     selectedMapLayerState,
     showDeviceCard
   } = props
-  const firstDeviceStatus = parseDeviceStatusResponse(getDeviceStatus || {})
+  const firstDeviceStatus = utils.parseMovementStatus(getMovementStatus || {})
   return (
     <Subscription
-      subscription={deviceLocationSubscription}
+      subscription={deviceSubscription}
       variables={{ deviceId, isWidget }}
       fetchPolicy="no-cache"
       shouldResubscribe={true}
     >
       {({ data, error, loading }) => {
-        const latestDeviceStatus = parseDeviceStatusResponse(
-          (error || loading) && !data ? {} : data.subscribeToDeviceStatus
-        )
+        console.log('Subscription Response', data)
+        const latestDeviceStatus =
+          error || loading
+            ? {}
+            : utils.parseMovementStatus(data.subscribeToMovementStatus)
         if (error) console.error(error)
         return (
           <LocationViewer

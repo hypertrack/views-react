@@ -1,6 +1,5 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
 import classNames from 'classnames'
 
 import { dateUtils } from './../../../../common'
@@ -29,10 +28,6 @@ const checkIfObjectHasValues = obj =>
     (hasValue, currentValue) => currentValue || hasValue,
     false
   )
-
-const GET_DEVICE_INFO = gql`
-  ${getDeviceInfo}
-`
 
 const initialiseLocationEvents = (first, last) => {
   const initArr = []
@@ -143,7 +138,7 @@ const LocationViewer = props => {
 
   return (
     <Query
-      query={GET_DEVICE_INFO}
+      query={getDeviceInfo}
       variables={{ deviceId, trackingId, publishableKey, isWidget }}
     >
       {({ loading, error, data }) => {

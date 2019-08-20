@@ -284,20 +284,13 @@ export const getDeviceInfo = gql`
       app_name
       app_version_string
       app_version_number
-      device_hardware
       device_brand
-      device_meta
       device_model
       name
-      network_operator
-      os_hardware_identifier
       os_name
       os_version
-      play_services_version
-      recorded_at
       sdk_version
       timezone
-      device_id
     }
   }
 `

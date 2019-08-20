@@ -13,49 +13,6 @@ export const parseDeviceInfo = ({ data, ...rest }) => {
   return utils.rectifyCase(obj)
 }
 
-const parseRawEvent = rawEvent => {
-  if (!rawEvent) return rawEvent
-  const { data, recorded_at } = rawEvent
-  try {
-    let rest = {}
-    if (typeof data === 'string') {
-      const _1stParsePass = JSON.parse(data)
-      if (typeof _1stParsePass === 'string') rest = JSON.parse(_1stParsePass)
-      else if (typeof _1stParsePass === 'object') rest = _1stParsePass
-    }
-    if (rest.location) {
-      rest.coordinates = rest.location.coordinates.reverse()
-      delete rest.location
-    }
-    return {
-      recorded_at,
-      ...rest
-    }
-  } catch (err) {
-    return rawEvent
-  }
-}
-
-export const parseDeviceStatusResponse = deviceStatus => {
-  try {
-    return {
-      ...deviceStatus,
-      [CONSTANTS.htEvent.health.change]: parseRawEvent(
-        deviceStatus[CONSTANTS.htEvent.health.change]
-      ),
-      [CONSTANTS.htEvent.location.change]: parseRawEvent(
-        deviceStatus[CONSTANTS.htEvent.location.change]
-      ),
-      [CONSTANTS.htEvent.activity.change]: parseRawEvent(
-        deviceStatus[CONSTANTS.htEvent.activity.change]
-      )
-    }
-  } catch (err) {
-    console.log(err)
-    return {}
-  }
-}
-
 export const ErrorState = ({ error, empty, assetsUrl }) => (
   <div className={styles.errorMessage}>
     <p>Could not get the latest location</p>
