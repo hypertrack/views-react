@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans:300,400,500');
+@import './variables';
+@import './animations';
+@import './buttons';
+
+// COLORS MAP
+$colors: (
+  grey: (
+    base: $grey,
+    dark: $grey--darker,
+    light: $grey--lighter
+  ),
+  black: (
+    base: $black,
+    dark: $black--darker
+  ),
+  warning: (
+    base: $red,
+    dark: $red--darker,
+    light: $red--lighter
+  ),
+  loading: (
+    base: $yellow,
+    dark: $yellow--darker,
+    light: $yellow--lighter
+  ),
+  hypergreen: (
+    base: $hyper-green,
+    light: $hyper-green-lighter,
+    dark: $hyper-green--darker
+  ),
+  link: (
+    base: $blue
+  )
+);
+
+// GET COLORS FUNCTION
+// Our function for shorter usage of map-get();
+@function setColor($scheme, $tone: base) {
+  @return map-get(map-get($colors, $scheme), $tone);
+}
+
+@function setSpace($factor) {
+  @return (0.25rem * $factor);
+}
+
+div[tabindex^='-1'] {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// @mixin height-vh($val: 100) {
+//   height: calc(var(--vh, 1vh) * #{$val});
+// }
+
+$font-sizes: (
+  l: 2rem,
+  m: 1.35rem,
+  n: 1rem,
+  s: 0.875rem,
+  xs: 0.75rem
+);
+
+$font-weights: (
+  bold: 500,
+  regular: 400,
+  light: 300
+);
+
+$font-families: (
+  base: $sans-serif,
+  monospace: $monospace
+);
+
+// GET COLORS FUNCTION
+// Our function for shorter usage of map-get();
+@mixin setFont($size, $weight: regular, $family: base, $line-height: 1.5) {
+  font-size: map-get($font-sizes, $size);
+  font-weight: map-get($font-weights, $weight);
+  font-family: map-get($font-families, $family);
+  line-height: $line-height;
+}
+
+body {
+  font-size: $base-font-size;
+  margin: 0;
+  @include setFont(n);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@import './legacy';

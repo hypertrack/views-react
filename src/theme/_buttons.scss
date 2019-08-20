@@ -1,0 +1,69 @@
+@mixin button($background, $font-color, $borderColor: 'transparent') {
+  @include setFont(n);
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  text-align: center;
+  color: $font-color;
+  background: $background;
+  border-radius: 4px;
+  padding: setSpace(4);
+  transition: 0.4s all ease-in-out;
+  border: 1px solid $borderColor;
+
+  &:hover {
+    //background: darken( $background, 10% );
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+@mixin button--small($background, $font, $borderColor: 'transparent') {
+  @include setFont(s);
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  text-align: center;
+  color: $font;
+  background: $background;
+  border-radius: 4px;
+  padding: setSpace(2) setSpace(4);
+  transition: 0.4s all ease-in-out;
+  border: 1px solid $borderColor;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    &:hover {
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+  }
+}
+
+@mixin button--white--small() {
+  @include setFont(s);
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  text-align: center;
+  color: $dark;
+  background: transparent;
+  border-radius: 4px;
+  padding: setSpace(3) setSpace(4);
+  transition: 0.2s all ease-in-out;
+  border: 1px solid $dark;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark;
+    border: 1px solid $dark;
+    color: white;
+  }
+}

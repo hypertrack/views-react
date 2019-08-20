@@ -1,0 +1,65 @@
+@import './../../../../theme/movement.scss';
+
+.searchContainer {
+  display: inline-flex;
+  font-size: 1rem;
+  line-height: initial;
+  width: 75%;
+  padding: 0.5rem 0.5rem;
+  padding-right: 0;
+  border-top: 1px solid setColor(grey, light);
+  z-index: 13;
+  border: 1px solid setColor(grey, base);
+  border-right:none;
+  border-radius: setSpace(4) 0 0 setSpace(4);
+  transition: 0.2s all ease-in-out;
+
+  &.isOpen {
+    border-radius: setSpace(4) 0 0 0;
+    box-shadow: 0 setSpace(3) setSpace(3) 0 setColor(grey, dark);
+    border-bottom: none;
+    width: 71%;
+  }
+  .searchIcon {
+    align-self: center;
+    filter: drop-shadow(1px 1px 1px #333);
+    opacity: 0.7;
+    z-index: 14;
+  }
+  .deviceSearchBar {
+    position: relative;
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0;
+    // border-radius: 4px;
+    -webkit-appearance: none;
+    overflow: hidden;
+    outline: none;
+    border:none;
+    @include setFont(n);
+  }
+  .searchDropDownContainer {
+    background-color: white;
+    position: absolute;
+    margin-top: 2rem;
+    left:0;
+    width: 67%;
+    max-height: 300px;
+    overflow: scroll;
+    box-shadow: 0 setSpace(3) setSpace(3) 0 setColor(grey, dark);
+    border: 1px solid setColor(grey, base);
+    border-radius: 0px 0px setSpace(4) setSpace(4);
+    box-shadow-top: none;
+    z-index: 14;
+  }
+  .noResults {
+    margin: 1rem;
+  }
+
+  &:hover {
+    // box-shadow: 0 0 setSpace(4) 0 setColor(grey, base);
+    .searchIcon {
+      opacity: 1;
+    }
+  }
+}

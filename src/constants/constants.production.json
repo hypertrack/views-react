@@ -1,0 +1,10 @@
+{
+  "appsync": {
+    "apiKey": "da2-nt5vwlflmngjfbe6cbsone4emm",
+    "authenticationType": "API_KEY",
+    "graphqlEndpoint": "https://7kcobbjpavdyhcxfvxrnktobjm.appsync-api.us-west-2.amazonaws.com/graphql",
+    "region": "us-west-2"
+  },
+  "baseURL": "https://live-api.htprod.hypertrack.com",
+  "buildCommit": "deadbeef"
+}

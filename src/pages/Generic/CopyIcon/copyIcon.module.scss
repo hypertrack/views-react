@@ -1,0 +1,26 @@
+@import '../../../theme/movement.scss';
+
+.copyIconContainer {
+  // padding: setSpace(0) setSpace(2) setSpace(0) setSpace(2);
+  float: right;
+  position: relative;
+  // line-height: setSpace(16);
+  .copyIcon {
+    height: $space--double;
+    transition: 0.4s all ease-in-out;
+    cursor: pointer;
+    opacity: 0.5;
+    img {
+      display: inline;
+      vertical-align: middle;
+      // height: setSpace(4.5);
+      // border-radius: 50%;
+      // box-shadow: 0px 0px setSpace(1) 0px setColor(grey, dark);
+      // transition: 0.4s all ease-in-out;
+      // vertical-align: text-top;
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

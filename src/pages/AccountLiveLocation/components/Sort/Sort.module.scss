@@ -1,0 +1,18 @@
+@import './../../../../theme/movement.scss';
+
+.sortIconContainer {
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+  border-right: 1px solid #EAEAEA;
+  border-radius: 0 setSpace(4) setSpace(4) 0;
+  width: 10%;
+  justify-content: center;
+  display: flex;
+  .sortIcon {
+    align-self: center;
+    filter: drop-shadow(1px 1px 1px #333);
+    &.inactive {
+      opacity: 0.5;
+    }
+  }
+}

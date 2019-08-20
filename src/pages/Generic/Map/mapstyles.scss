@@ -1,0 +1,28 @@
+@import './../../../theme/movement.scss';
+
+.map-container {
+  position: absolute;
+  height: 100%;
+  // height: calc(calc(var(--vh, 1vh) * 100) - #{$navbar-height});
+  width: 100%;
+  // top: 0;
+  background-color: $grey--lighter;
+  z-index: 1;
+}
+
+.leaflet-marker-pane > * {
+  transition: transform 1s linear;
+}
+
+.live-location-icon-root {
+  // margin-top: setSpace(-4) !important;
+  // margin-left: setSpace(-4) !important;
+  z-index: 400 !important;
+  &.small {
+    z-index: 300 !important;
+    width: 16px !important;
+    height: 16px !important;
+    // margin-top: setSpace(-2) !important;
+    // margin-left: setSpace(-2) !important;
+  }
+}

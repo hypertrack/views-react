@@ -1,0 +1,124 @@
+{
+  "animation": {
+    "animationFrameSet": ["1s"],
+    "inputFrameSet": [0, 60]
+  },
+  "svgAnimations": {
+    "loading": "ht_loading"
+  },
+  "api": {
+    "devices": "devices",
+    "pkApi": "api-key",
+    "webhooks": "webhook-config"
+  },
+  "distanceNotations": {
+    "speed": {
+      "metric": "kph",
+      "imperial": "mph"
+    },
+    "distance": {
+      "metric": "km",
+      "imperial": "mi"
+    }
+  },
+  "HT_SF": [-122.4008685, 37.794993],
+  "movementStatus": {
+    "active": "active",
+    "inactive": "inactive",
+    "disconnected": "disconnected"
+  },
+  "tripStatus": {
+    "active": "active",
+    "completed": "completed"
+  },
+  "inactiveReason": {
+    "locationPermissionsDenied": "locationPermissionsDenied",
+    "motionActivityPermissionsDenied": "motionActivityPermissionsDenied",
+    "locationServicesDisabled": "locationServicesDisabled",
+    "motionActivityServicesDisabled": "motionActivityServicesDisabled",
+    "motionActivityServicesUnavailable": "motionActivityServicesUnavailable",
+    "stoppedProgrammatically": "stoppedProgrammatically",
+    "unknown": "unknown"
+  },
+  "htEvent": {
+    "activity": {
+      "change": "activity",
+      "disabled": "activity.disabled",
+      "not_supported": "activity.not_supported",
+      "permission_denied": "activity.permission_denied",
+      "permission_granted": "activity.permission_granted",
+      "permission_not_requested": "activity.permission_not_requested"
+    },
+    "application": {
+      "updated": "application.updated"
+    },
+    "battery": {
+      "back_to_normal": "battery.back_to_normal",
+      "charging": "battery.charging",
+      "discharging": "battery.discharging",
+      "low": "battery.low",
+      "low_power_mode_off": "battery.low_power_mode_off",
+      "low_power_mode_on": "battery.low_power_mode_on"
+    },
+    "health": {
+      "change": "change"
+    },
+    "location": {
+      "change": "location",
+      "disabled": "location.disabled",
+      "permission_denied": "location.permission_denied",
+      "permission_granted": "location.permission_granted",
+      "permission_not_requested": "location.permission_not_requested"
+    },
+    "network": {
+      "disconnected": "network.disconnected",
+      "reconnected": "network.reconnected"
+    },
+    "outage": {
+      "denied": "outage.denied",
+      "disabled": "outage.disabled",
+      "general": "outage.general",
+      "hardware": "outage.hardware",
+      "network": "outage.network",
+      "ok": "OK",
+      "paused": "outage.paused",
+      "stopped": "outage.stopped",
+      "software": "outage.software"
+    },
+    "resumption": {
+      "resumption": "resumption",
+      "enabled": "resumption.enabled",
+      "granted": "resumption.granted",
+      "hardware": "resumption.hardware",
+      "network": "resumption.network",
+      "resumed": "resumption.resumed",
+      "software": "resumption.software",
+      "started": "resumption.started"
+    },
+    "status": {
+      "update": "status.update"
+    }
+  },
+  "liveEnvs": ["live", "production"],
+  "MAPTILER_KEY": "k04LdrAOsF1NlYp6gFpm",
+  "map": {
+    "inactivityTimer": 30,
+    "numberOfEventsIntrail": 5,
+    "trailDashPattern": "5",
+    "colors": {
+      "activeColor": "#00c94b",
+      "inactiveColor": "#858585"
+    }
+  },
+  "webhooks_docs_url": "https://docs.hypertrack.com/#live-webhooks",
+  "assetsUrl": "https://embed.hypertrack.com/assets/",
+  "tileLayers": {
+    "base": {
+      "selectedLayer":"https://api.maptiler.com/maps/voyager/{z}/{x}/{y}@2x.png?key={key}", "name": "base"
+    },
+    "street": {"selectedLayer": "https://api.maptiler.com/maps/streets/{z}/{x}/{y}@2x.png?key={key}", "name":"street"},
+    "satellite": {
+      "selectedLayer": "https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}@2x.jpg?key={key}",  "name": "satellite"
+      }
+  }
+}

@@ -1,0 +1,90 @@
+@import './../../../../theme/movement.scss';
+
+.liveLocation {
+  &.container {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.cardWrapper {
+  position: absolute;
+  margin-top: setSpace(8);
+  left: $space--6x;
+  z-index: 12;
+  height: 80%;
+  overflow-y: scroll;
+  @media screen and (max-width: 500px) {
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    margin-top: unset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+  &.isWidget {
+    margin-top: setSpace(12);
+  }
+  &.showDeviceCard {
+    display: none;
+  }
+}
+
+.deviceLiveCardContainer {
+  width: 400px;
+  background-color: white;
+  border-radius: 4px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+.deviceLiveCard {
+  @include setFont(n, bold);
+  color: setColor(black);
+}
+
+.deviceInfoCardContainer {
+  width: 400px;
+  border-radius: 4px;
+  background-color: white;
+  padding: setSpace(6);
+  padding-bottom: 0;
+  margin-top: $space--double;
+  overflow: scroll;
+  @media screen and (max-width: 500px) {
+    box-shadow: none;
+    width: 100%;
+    margin-top: unset;
+    height: 450px;
+    max-height: 50%;
+  }
+}
+
+.deviceInfoCard {
+  @include setFont(n, bold);
+  color: setColor(black);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 206, 91, 0.4);
+    background-color: rgba(0, 206, 91, 0.4);
+  }
+  25% {
+    box-shadow: 0 0 0 2.5px rgba(0, 206, 91, 0.25);
+    background-color: rgba(0, 206, 91, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(0, 206, 91, 0.2);
+    background-color: rgba(0, 206, 91, 0.2);
+  }
+  75% {
+    box-shadow: 0 0 0 6px rgba(0, 206, 91, 0.1);
+    background-color: rgba(0, 206, 91, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 7.5px rgba(0, 206, 91, 0);
+    background-color: rgba(0, 206, 91, 0);
+  }
+}
