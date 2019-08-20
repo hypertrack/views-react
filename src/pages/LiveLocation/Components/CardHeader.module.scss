@@ -1,0 +1,169 @@
+@import './../../../theme/movement.scss';
+
+.deviceCardContainer {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  .deviceCardContent {
+    width: 100%;
+    padding: setSpace(4) setSpace(4);
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    overflow: hidden;
+    & > img {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.deviceCardInfo {
+  display: block;
+  padding-left: setSpace(2);
+  min-width: 50%;
+  flex: auto;
+  .deviceCardTimeStamp {
+    @include setFont(s, light);
+    color: setColor(grey, dark);
+    display: flex;
+    padding-bottom: setSpace(1);
+    min-height: 1.5em;
+    white-space: nowrap;
+  }
+  .deviceConnectionWarning {
+    @include setFont(s);
+    color: setColor(warning);
+    display: flex;
+  }
+  .deviceIdInfoContainer {
+    display: flex;
+    .headerText {
+      @include setFont(n);
+      color: setColor(black);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      text-align: left;
+      display: block;
+      min-height: setSpace(6);
+      padding-bottom: setSpace(1);
+      padding-right: setSpace(1);
+    }
+    .deviceInfoIcon {
+      *:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.deviceMeta {
+  position: relative;
+  display: inline-flex;
+  flex: auto;
+  justify-content: flex-end;
+  align-items: center;
+  .metaItemBattery,
+  .metaItemSpeed {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    float: right;
+    padding: setSpace(1);
+    border-radius: 3px;
+    background: setColor(grey, light);
+    margin-right: setSpace(1);
+    img {
+      max-width: setSpace(4);
+      max-height: setSpace(4);
+      display: block;
+      float: left;
+    }
+  }
+  .metaItemSpeed {
+    display: flex;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    .speedValue {
+      @include setFont(xs);
+      color: setColor(black);
+      line-height: setSpace(4);
+      padding-left: setSpace(1);
+    }
+  }
+  .dontShow {
+    visibility: hidden;
+  }
+}
+
+.leftIcon {
+  cursor: pointer;
+  min-width: setSpace(6);
+  width: setSpace(6);
+  margin-right: setSpace(2);
+  img {
+    width: 100%;
+  }
+}
+
+.deviceCardActions {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 1px;
+  .deviceCardActionItem {
+    width: 100%;
+    position: relative;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: setSpace(4) 0;
+    background: setColor(grey, light);
+    border-top: 1px solid setColor(grey);
+    transition: 0.4s background ease-in-out;
+    cursor: pointer;
+    img {
+      height: setSpace(4);
+    }
+    span {
+      @include setFont(xs);
+      color: setColor(black);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-left: setSpace(2);
+    }
+    &:nth-child(1) {
+      border-right: 1px solid setColor(grey);
+    }
+    &:hover {
+      background: darken(setColor(grey, light), 3%);
+    }
+  }
+}
+
+.deviceCardBottomLine {
+  @include setFont(xs);
+  color: setColor(black);
+  display: flex;
+  align-items: center;
+  .deviceInfo {
+    padding-left: $space--half;
+  }
+}
+
+.loadingContent {
+  @include loading-content();
+}
+
+.outageMessage {
+  @include setFont(s, light);
+  color: setColor(warning);
+}

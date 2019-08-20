@@ -1,0 +1,12 @@
+.bp3-custom-tooltip {
+  .bp3-popover-content {
+    background: black !important;
+  }
+  .bp3-popover-arrow {
+    svg {
+      path {
+          fill: black !important;
+      }
+    }
+  }
+}

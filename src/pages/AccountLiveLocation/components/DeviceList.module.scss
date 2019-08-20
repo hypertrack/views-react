@@ -1,0 +1,204 @@
+@import './../../../theme/movement.scss';
+// Animations
+@keyframes fly {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transform: rotate(0deg);
+    // transform: skew(0deg);
+    opacity: 0.5;
+  }
+
+  25% {
+    -webkit-transform: translate3d(25%, 0, 0);
+    transform: translate3d(15%, 0, 0);
+    transform: rotate(10deg);
+    // transform: skew(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    -webkit-transform: translate3d(50%, 0, 0);
+    transform: rotate(20deg);
+    transform: translate3d(10%, 0, 0);
+    // transform: skew(0deg);
+    opacity: 0.7;
+  }
+  75% {
+    -webkit-transform: translate3d(25%, 0, 0);
+    transform: translate3d(15%, 0, 0);
+    transform: rotate(10deg);
+    // transform: skew(0deg);
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translate3d(0%, 0, 0);
+    transform: translate3d(5%, 0, 0);
+    transform: rotate(0deg);
+    // transform: skew(-20deg);
+    opacity: 0.5;
+  }
+}
+
+.deviceList {
+  outline: none;
+  height: 100%;
+  width: 100%;
+  &.container {
+    position: relative;
+    z-index: 1;
+    // @media screen and (max-width: 500px) {
+    //   @include height-vh();
+    // }
+  }
+}
+
+.deviceListCardContainer {
+  @include setFont(s);
+  color: setColor(black);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+  margin-top: setSpace(8);
+  left: $space--4x;
+  width: 325px;
+  position: absolute;
+  z-index: 11;
+  background-color: white;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-radius: 4px;
+  @media screen and (min-width: 501px) {
+    height: 80%;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-top: 0;
+    border-radius: 4px 4px 0 0;
+    height: $space--8x;
+    max-height: 100%;
+
+    &.activeList {
+      height: calc(calc(var(--vh, 1vh) * 100) - 4.125rem);
+      position: absolute;
+      overflow-y: scroll;
+
+      &.deviceListCardContainer {
+        border-radius: 0;
+      }
+      &.isWidget {
+        height: calc(calc(var(--vh, 1vh) * 100));
+      }
+    }
+  }
+
+  :global(.accordion_item_header) {
+    @include setFont(s, regular);
+    padding: $space $space--double;
+    display: flex;
+    align-items: center;
+    // border-top: 1px solid setColor(grey, light);
+    cursor: pointer;
+    transition: 0.4s all ease-in-out;
+    &:hover {
+      background-color: setColor(grey, light);
+    }
+  }
+  .searchAndFilterContainer {
+    position: relative;
+    display: flex;
+    margin: 0 setSpace(4) setSpace(4) setSpace(4);
+  }
+}
+
+.deviceListCardContainer:not(.activeList) {
+  transition: 0.4s all ease-in-out;
+}
+
+
+.deviceListHeader {
+  display: flex;
+  @include setFont(m);
+  align-items: center;
+  color: setColor(black);
+  outline: none;
+  padding: $space--double $space--double;
+}
+
+.deviceDetail {
+  width: 75%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.deviceItemContainer {
+  @include setFont(s);
+  padding: setSpace(4) setSpace(5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid setColor(grey, light);
+  cursor: pointer;
+  transition: 0.4s all ease-in-out;
+  &:hover {
+    background-color: setColor(grey, light);
+    .actionCta {
+      opacity: 1;
+    }
+  }
+    .actionFlight {
+      opacity: 0.5;
+      img {
+      vertical-align: middle;
+      }
+      &:hover {
+        animation: fly 2.5s ease-in-out;
+      }
+    }
+  .activityItem {
+    height: 1.5rem;
+    opacity: 0.8;
+    margin-right: setSpace(3);
+  }
+  .deviceDetail {
+    // padding-left: 1.5rem;
+    @include setFont(s);
+    color: setColor(black);
+    flex: auto;
+  }
+  .actionCta {
+    height: $space--double;
+    opacity: 0.25;
+  }
+
+  user-select: none;
+
+  &.message {
+    color: setColor(grey, dark);
+  }
+  .endOfTheList {
+    width: 100%;
+    text-align: center;
+  }
+  .emptyList {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.listVisibilityButton {
+  display: none;
+  margin-left: auto;
+  @media screen and (max-width: 500px) {
+    @include setFont(xs);
+    color: setColor(black);
+
+    border: 1px solid setColor(black);
+    padding: $space--half $space $space--half $space;
+    border-radius: 2px;
+    display: block;
+  }
+}

@@ -1,0 +1,40 @@
+@import '../../../theme/movement.scss';
+
+.mapCenterIcon {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  bottom: $space--double;
+  right: $space--double;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0px 0px $space--half 0px setColor(grey, dark);
+  transition: 0.4s all ease-in-out;
+  z-index: 11;
+  opacity: 0.7;
+  &:hover {
+    box-shadow: 0px 0px $space--double 0px setColor(grey, dark);
+    cursor: pointer;
+    opacity: 1;
+  }
+  .iconContainer {
+    height: 30px;
+    width: 30px;
+
+    & > img {
+      position: relative;
+      left: 10%;
+      top: 10%;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    top: calc(#{$navbar-height} + #{$space--double});
+    bottom: unset;
+  }
+  &.isWidget {
+    @media screen and (max-width: 500px) {
+      top: setSpace(4);
+    }
+  }
+}
