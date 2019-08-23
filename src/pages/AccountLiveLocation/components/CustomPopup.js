@@ -2,9 +2,11 @@ import React from 'react'
 import { dateUtils, utils } from './../../../common'
 import CONSTANTS from '../../../constants'
 
-const getOutageMessage = (device_status, { reason }) =>
+const getOutageMessage = (device_status, inactiveReason) =>
   CONSTANTS.newMovementStatusMessage[device_status] ||
-  CONSTANTS.newMovementStatusMessage[reason]
+  CONSTANTS.newMovementStatusMessage[
+    inactiveReason.reason ? inactiveReason.reason : 'unknown'
+  ]
 
 const fixCoordinates = val => (val ? val.toFixed(3) : 'Unknown')
 
@@ -34,7 +36,7 @@ export const customPopup = (
               <td className="popupTableRowHeader">Outage</td>
               <td className="emptyCell" />
               <td className="popupTableRowContent error">
-                {() => getOutageMessage(device_status, notActivePayload)}
+                {getOutageMessage(device_status, notActivePayload)}
               </td>
             </tr>
           ) : null}

@@ -67,17 +67,19 @@ const statusMessageMap = {
 }
 
 const newMovementStatusMessage = {
-  [APP_CONSTANTS.movementStatus.disconnected]: 'Device disconncted',
+  [APP_CONSTANTS.movementStatus.disconnected]: 'Device disconnected',
   [APP_CONSTANTS.inactiveReason.locationPermissionsDenied]:
     'Location permission denied',
-  [APP_CONSTANTS.inactiveReason.locationServicesDisabled]: 'Location disabled',
+  [APP_CONSTANTS.inactiveReason.locationServicesDisabled]:
+    'Location service disabled',
   [APP_CONSTANTS.inactiveReason.motionActivityPermissionsDenied]:
     'Activity permission denied',
   [APP_CONSTANTS.inactiveReason.motionActivityServicesDisabled]:
-    'Activity disabled',
+    'Activity service disabled',
   [APP_CONSTANTS.inactiveReason.motionActivityServicesUnavailable]:
-    'Activity not supported',
-  [APP_CONSTANTS.inactiveReason.stoppedProgrammatically]: 'Tracking stopped',
+    'Activity service unavailable',
+  [APP_CONSTANTS.inactiveReason.stoppedProgrammatically]:
+    'Stopped programmatically',
   [APP_CONSTANTS.inactiveReason.unknown]: 'Unknown'
 }
 

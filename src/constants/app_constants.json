@@ -32,12 +32,12 @@
     "completed": "completed"
   },
   "inactiveReason": {
-    "locationPermissionsDenied": "locationPermissionsDenied",
-    "motionActivityPermissionsDenied": "motionActivityPermissionsDenied",
-    "locationServicesDisabled": "locationServicesDisabled",
-    "motionActivityServicesDisabled": "motionActivityServicesDisabled",
-    "motionActivityServicesUnavailable": "motionActivityServicesUnavailable",
-    "stoppedProgrammatically": "stoppedProgrammatically",
+    "locationPermissionsDenied": "location_permissions_denied",
+    "motionActivityPermissionsDenied": "motion_activity_permissions_denied",
+    "locationServicesDisabled": "location_services_disabled",
+    "motionActivityServicesDisabled": "motion_activity_services_disabled",
+    "motionActivityServicesUnavailable": "motion_activity_services_unavailable",
+    "stoppedProgrammatically": "stopped_programmatically",
     "unknown": "unknown"
   },
   "htEvent": {
