@@ -20,6 +20,8 @@ const AccountLiveLocationContainer = ({
   layerType,
   layerTypes,
   publishableKey,
+  navigateOnClick,
+  onDeviceClick,
   selectedDeviceForSingleDeviceView,
   setSelectedDeviceForSingleDeviceView,
   selectedMapLayerState,
@@ -29,7 +31,7 @@ const AccountLiveLocationContainer = ({
 }) => {
   return (
     <Query
-    query={listPublicMovementStatus}
+      query={listPublicMovementStatus}
       variables={{ publishableKey }}
       fetchPolicy="no-cache"
       notifyOnNetworkStatusChange={true} //will test this as Socket closing issue remedy
@@ -65,6 +67,8 @@ const AccountLiveLocationContainer = ({
             )}
             accountId={data.listPublicMovementStatus[0].account_id} // TODO we need to rethink this
             isWidget={isWidget}
+            onDeviceClick={onDeviceClick}
+            navigateOnClick={navigateOnClick}
             customLayerUrl={customLayerUrl}
             showDeviceList={showDeviceList}
             showTooltips={showTooltips}

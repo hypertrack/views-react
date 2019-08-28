@@ -132,6 +132,8 @@ const Map = props => {
     selectedDeviceId,
     selectedMapLayerState,
     center,
+    onDeviceClick,
+    navigateOnClick,
     devices,
     zoom,
     setSelectedDeviceForSingleDeviceView,
@@ -154,8 +156,11 @@ const Map = props => {
       )
     })
     leafletMarker.on('click', e => {
+      if (navigateOnClick) {
+        setSelectedDeviceForSingleDeviceView(device_id)
+      }
+      onDeviceClick(device_id)
       e.target.closePopup()
-      setSelectedDeviceForSingleDeviceView(device_id)
     })
     leafletMarker.on('mouseout', e => {
       popupTimeouts.forEach(timeout => {
@@ -182,7 +187,7 @@ const Map = props => {
           deviceData.name,
           deviceData.timezone,
           deviceData.location.geometry.coordinates,
-          deviceData.inactive,
+          deviceData.inactive
         )
       )
     )
@@ -239,12 +244,7 @@ const Map = props => {
   //generate marker to be added to relevant sublayer
   const getNewMarker = deviceData => {
     const { device_id, location } = deviceData
-    if (
-      !(
-        location &&
-        location.geometry &&
-        location.geometry.coordinates )
-    )
+    if (!(location && location.geometry && location.geometry.coordinates))
       return null
     let reversedCoordinates = [...location.geometry.coordinates]
 
@@ -378,8 +378,8 @@ const Map = props => {
             maxZoom: 21
           }
         )
-        if (currentLayer){
-          mapRef.current.removeLayer(currentLayer)   
+        if (currentLayer) {
+          mapRef.current.removeLayer(currentLayer)
           mapRef.current.addLayer(newLayer)
           setCurrentLayer(newLayer)
         }
@@ -401,161 +401,154 @@ const Map = props => {
     }
   }, []) // eslint-disable-line
 
-  useLayoutEffect(
-    () => {
-      const device = devicesObj[selectedDeviceId]
-      if (device) {
-        const distance = mapRef.current.distance(
-          mapRef.current.getCenter(),
-          device._latlng
-        ) // calculate distance to adjust animation time and timeout for popup
-        const duration = Math.floor(distance > 10000 ? 4 : 1)
-        mapRef.current.flyTo([device._latlng.lat, device._latlng.lng], 18, {
-          animate: true,
-          duration: duration
-        })
-        popupTimeouts.push(
-          setTimeout(function() {
-            setFollow({ device_id: selectedDeviceId })
-            device.openPopup()
-          }, duration * 1000 + 500)
-        )
-        popupTimeouts.push()
-      }
-      return () => {
-        popupTimeouts.forEach(timeout => {
-          clearTimeout(timeout)
-        })
-      }
-    },
-    [selectedDeviceId]
-  )
-
-  useLayoutEffect(
-    () => {
-    if (subscriptionData && subscriptionData.device_id) {
-      const subscriptionDevice = utils.parseMovementStatus(
-        subscriptionData,
-        devicesMap[subscriptionData.device_id]
+  useLayoutEffect(() => {
+    const device = devicesObj[selectedDeviceId]
+    if (device) {
+      const distance = mapRef.current.distance(
+        mapRef.current.getCenter(),
+        device._latlng
+      ) // calculate distance to adjust animation time and timeout for popup
+      const duration = Math.floor(distance > 10000 ? 4 : 1)
+      mapRef.current.flyTo([device._latlng.lat, device._latlng.lng], 18, {
+        animate: true,
+        duration: duration
+      })
+      popupTimeouts.push(
+        setTimeout(function() {
+          setFollow({ device_id: selectedDeviceId })
+          device.openPopup()
+        }, duration * 1000 + 500)
       )
+      popupTimeouts.push()
+    }
+    return () => {
+      popupTimeouts.forEach(timeout => {
+        clearTimeout(timeout)
+      })
+    }
+  }, [selectedDeviceId])
 
-      if (devicesObj[subscriptionDevice.device_id] && mapRef.current) {
-        const existingDevice = devicesObj[subscriptionDevice.device_id]
-        const location = subscriptionDevice.location
-        if (
-          location && location.geometry && location.geometry.coordinates
-        ) {
-          //bindPopup
-          bindPopup(existingDevice, subscriptionDevice)
+  useLayoutEffect(
+    () => {
+      if (subscriptionData && subscriptionData.device_id) {
+        const subscriptionDevice = utils.parseMovementStatus(
+          subscriptionData,
+          devicesMap[subscriptionData.device_id]
+        )
 
-          //set new icon
-          existingDevice.setIcon(getIcon(subscriptionDevice))
-          //slide animation to new location
-          activeClusterLayer.current.removeLayer(existingDevice)
-          activeClusterLayer.current.addLayer(existingDevice)
-          try {
-            existingDevice.slideTo(
-              // this errors out when device_name changed through mobile SDK? Why?
-              [
-                location.geometry.coordinates[0],
-                location.geometry.coordinates[1]
-              ],
-              {
-                duration: 2000,
-                keepAtCenter:
-                  follow.device_id &&
-                  follow.device_id === subscriptionDevice.device_id
-                    ? true
-                    : false
-              }
-            )
-          } catch (err) {
-            console.log(err)
-          }
-        }
-      } else if (
-        subscriptionDevice &&
-        subscriptionDevice.location &&
-        subscriptionDevice.location.data
-      ) {
-        const newMarker = getNewMarker(subscriptionDevice)
-        devicesObj[subscriptionDevice.device_id] = newMarker
-        if (
-          subscriptionDevice.device_status === CONSTANTS.movementStatus.active
-        ) {
-          try {
-            if (
-              activeClusterLayer &&
-              activeClusterLayer.current &&
-              activeClusterLayer.current.refreshClusters &&
-              activeClusterLayer.current.addLayer
-            ) {
-              activeClusterLayer.current.addLayer(newMarker)
-              // activeClusterLayer.current.refreshClusters(newMarker)
-              activeClusterLayer.current.refreshClusters()
+        if (devicesObj[subscriptionDevice.device_id] && mapRef.current) {
+          const existingDevice = devicesObj[subscriptionDevice.device_id]
+          const location = subscriptionDevice.location
+          if (location && location.geometry && location.geometry.coordinates) {
+            //bindPopup
+            bindPopup(existingDevice, subscriptionDevice)
+
+            //set new icon
+            existingDevice.setIcon(getIcon(subscriptionDevice))
+            //slide animation to new location
+            activeClusterLayer.current.removeLayer(existingDevice)
+            activeClusterLayer.current.addLayer(existingDevice)
+            try {
+              existingDevice.slideTo(
+                // this errors out when device_name changed through mobile SDK? Why?
+                [
+                  location.geometry.coordinates[0],
+                  location.geometry.coordinates[1]
+                ],
+                {
+                  duration: 2000,
+                  keepAtCenter:
+                    follow.device_id &&
+                    follow.device_id === subscriptionDevice.device_id
+                      ? true
+                      : false
+                }
+              )
+            } catch (err) {
+              console.log(err)
             }
-            if (
-              mainClusterLayer &&
-              mainClusterLayer.current &&
-              mainClusterLayer.current.refreshClusters
-            )
-              mainClusterLayer.current.refreshClusters()
-            if (
-              nonActiveClusterLayer &&
-              nonActiveClusterLayer.current &&
-              nonActiveClusterLayer.current.refreshClusters
-            )
-              nonActiveClusterLayer.current.refreshClusters()
-          } catch (err) {
-            console.log(err)
           }
-        } else {
-          if (newMarker) {
-            if (nonActiveClusterLayer.current) {
-              nonActiveClusterLayer.current.addLayer(newMarker)
-              if (nonActiveClusterLayer.current.refreshClusters) {
-                // nonActiveClusterLayer.current.refreshClusters(newMarker)
+        } else if (
+          subscriptionDevice &&
+          subscriptionDevice.location &&
+          subscriptionDevice.location.data
+        ) {
+          const newMarker = getNewMarker(subscriptionDevice)
+          devicesObj[subscriptionDevice.device_id] = newMarker
+          if (
+            subscriptionDevice.device_status === CONSTANTS.movementStatus.active
+          ) {
+            try {
+              if (
+                activeClusterLayer &&
+                activeClusterLayer.current &&
+                activeClusterLayer.current.refreshClusters &&
+                activeClusterLayer.current.addLayer
+              ) {
+                activeClusterLayer.current.addLayer(newMarker)
+                // activeClusterLayer.current.refreshClusters(newMarker)
+                activeClusterLayer.current.refreshClusters()
+              }
+              if (
+                mainClusterLayer &&
+                mainClusterLayer.current &&
+                mainClusterLayer.current.refreshClusters
+              )
+                mainClusterLayer.current.refreshClusters()
+              if (
+                nonActiveClusterLayer &&
+                nonActiveClusterLayer.current &&
+                nonActiveClusterLayer.current.refreshClusters
+              )
                 nonActiveClusterLayer.current.refreshClusters()
-              }
+            } catch (err) {
+              console.log(err)
             }
-            if (mainClusterLayer.current)
-              mainClusterLayer.current.refreshClusters()
+          } else {
+            if (newMarker) {
+              if (nonActiveClusterLayer.current) {
+                nonActiveClusterLayer.current.addLayer(newMarker)
+                if (nonActiveClusterLayer.current.refreshClusters) {
+                  // nonActiveClusterLayer.current.refreshClusters(newMarker)
+                  nonActiveClusterLayer.current.refreshClusters()
+                }
+              }
+              if (mainClusterLayer.current)
+                mainClusterLayer.current.refreshClusters()
+            }
           }
         }
-      }
-      return () => {}
+        return () => {}
       }
     },
     [subscriptionData] // eslint-disable-line
   )
 
-  useEffect(
-    () => {
-      for (let x in devices) { // eslint-disable-line
-        if (showTooltips) {
-          // devicesObj[devices[x].device_id].getTooltip().options.className =
-          //   'ht-tooltip-enable'
-          devicesObj[devices[x].device_id].openTooltip()
-          // .bindTooltip(
-          // devices[x].name || devices[x].device_id,
-          // {
-          //   offset: new Leaflet.point(5, 15),
-          //   direction: 'bottom',
-          //   className: 'ht-tooltip-enable'
-          // }
-          // )
-        } else {
-          // devicesObj[devices[x].device_id].getTooltip().options.className =
-          //   'ht-tooltip-disable'
-          devicesObj[devices[x].device_id].closeTooltip()
-        }
-        // else if (devices[x].name && !showTooltips) {
-        //   devicesObj[devices[x].device_id].unbindTooltip()
+  useEffect(() => {
+    // eslint-disable-line
+    Object.keys(devices).forEach(x => {
+      if (showTooltips) {
+        // devicesObj[devices[x].device_id].getTooltip().options.className =
+        //   'ht-tooltip-enable'
+        devicesObj[devices[x].device_id].openTooltip()
+        // .bindTooltip(
+        // devices[x].name || devices[x].device_id,
+        // {
+        //   offset: new Leaflet.point(5, 15),
+        //   direction: 'bottom',
+        //   className: 'ht-tooltip-enable'
         // }
+        // )
+      } else {
+        // devicesObj[devices[x].device_id].getTooltip().options.className =
+        //   'ht-tooltip-disable'
+        devicesObj[devices[x].device_id].closeTooltip()
       }
-    },
-    [showTooltips, devices]
-  )
+      // else if (devices[x].name && !showTooltips) {
+      //   devicesObj[devices[x].device_id].unbindTooltip()
+      // }
+    })
+  }, [showTooltips, devices])
 
   return <div ref={mapRef} id="map" className="account-map-container" />
 }

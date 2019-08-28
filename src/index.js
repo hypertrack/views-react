@@ -55,9 +55,8 @@ if (process.env.REACT_APP_PUBLISHABLE_KEY) {
       }}
     >
       <LiveView
-        publishableKey={
-          process.env.REACT_APP_PUBLISHABLE_KEY
-        }
+        navigateOnClick={false}
+        publishableKey={process.env.REACT_APP_PUBLISHABLE_KEY}
         showTooltips={false}
         showDeviceList={true}
         showDeviceCard={true}

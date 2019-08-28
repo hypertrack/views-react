@@ -21,6 +21,8 @@ const AccountLiveLocation = ({
   accountId,
   assetsUrl,
   className,
+  onDeviceClick,
+  navigateOnClick,
   initialDeviceListOrder,
   initialDeviceListMap,
   isWidget,
@@ -46,7 +48,7 @@ const AccountLiveLocation = ({
       fetchPolicy="no-cache"
     >
       {({ error, data, loading }) => {
-    const subscribeToMovementStatus =
+        const subscribeToMovementStatus =
           error || loading ? {} : data.subscribeToMovementStatus
 
         const devicesMap = mergeSubDataIntoInitialData(
@@ -97,6 +99,8 @@ const AccountLiveLocation = ({
               <Map
                 assetsUrl={assetsUrl}
                 subscriptionData={subscribeToMovementStatus}
+                navigateOnClick={navigateOnClick}
+                onDeviceClick={onDeviceClick}
                 selectedDeviceId={selectedDeviceId}
                 setSelectedDeviceId={setSelectedDeviceId}
                 devicesMap={devicesMap}

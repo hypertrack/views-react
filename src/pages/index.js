@@ -29,6 +29,7 @@ const LiveViewContainer = props => {
     className,
     defaultLayer,
     publishableKey,
+    onDeviceClick,
     customLayerUrl,
     showDeviceCard,
     showDeviceList,
@@ -56,33 +57,24 @@ const LiveViewContainer = props => {
 
   const [state, dispatch] = React.useReducer(reducer, initialState)
   const [viewport, setViewport] = React.useState({})
-  React.useEffect(
-    () => {
-      if (defaultLayer !== 'custom') {
-        dispatch({
-          type: defaultLayer
-        })
-      } else if (customLayerUrl !== '') {
-        dispatch({
-          type: 'custom',
-          data: customLayerUrl
-        })
-      }
-    },
-    [defaultLayer, customLayerUrl]
-  )
-  React.useEffect(
-    () => {
-      setSelectedDeviceForSingleDeviceView(selectedDeviceId)
-    },
-    [selectedDeviceId]
-  )
-  React.useEffect(
-    () => {
-      setSelectedAssetsUrl(assetsUrl)
-    },
-    [assetsUrl]
-  )
+  React.useEffect(() => {
+    if (defaultLayer !== 'custom') {
+      dispatch({
+        type: defaultLayer
+      })
+    } else if (customLayerUrl !== '') {
+      dispatch({
+        type: 'custom',
+        data: customLayerUrl
+      })
+    }
+  }, [defaultLayer, customLayerUrl])
+  React.useEffect(() => {
+    setSelectedDeviceForSingleDeviceView(selectedDeviceId)
+  }, [selectedDeviceId])
+  React.useEffect(() => {
+    setSelectedAssetsUrl(assetsUrl)
+  }, [assetsUrl])
 
   return (
     <Suspense fallback={<PageLoader />}>
@@ -112,6 +104,7 @@ const LiveViewContainer = props => {
               isWidget={true}
               showDeviceList={showDeviceList}
               showTooltips={showTooltips}
+              onDeviceClick={onDeviceClick}
               customLayerUrl={customLayerUrl}
               selectedDeviceForSingleDeviceView={
                 selectedDeviceForSingleDeviceView
@@ -123,6 +116,7 @@ const LiveViewContainer = props => {
               setSelectedMapLayer={dispatch}
               viewport={viewport}
               setViewport={setViewport}
+              {...props}
             />
           )}
         </div>
@@ -151,5 +145,7 @@ LiveViewContainer.defaultProps = {
   },
   showDeviceList: true,
   showDeviceCard: true,
-  showTooltips: false
+  showTooltips: false,
+  onDeviceClick: id => console.log(''),
+  navigateOnClick: true
 }
