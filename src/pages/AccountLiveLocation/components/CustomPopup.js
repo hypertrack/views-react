@@ -17,7 +17,9 @@ export const customPopup = (
   name,
   timezone,
   reversedCoordinates,
-  notActivePayload
+  notActivePayload,
+  activePayload,
+  disconnectedPayload
 ) => {
   return (
     <div className="accountLiveLocationPopupBody">
@@ -44,7 +46,7 @@ export const customPopup = (
             <td className="popupTableRowHeader">Activity</td>
             <td className="emptyCell" />
             <td className="popupTableRowContent">
-              {device_status.active ? device_status.active.activity : 'unknown'}
+              {activePayload ? activePayload.activity : 'unknown'}
             </td>
           </tr>
           <tr className="popupTableRow">

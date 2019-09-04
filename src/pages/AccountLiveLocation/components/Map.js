@@ -170,6 +170,7 @@ const Map = props => {
   }
 
   const bindPopup = (leafletMarker, deviceData) => {
+    leafletMarker.unbindPopup()
     const popup = Leaflet.popup()
     leafletMarker.on('move', function() {
       try {
@@ -187,7 +188,9 @@ const Map = props => {
           deviceData.name,
           deviceData.timezone,
           deviceData.location.geometry.coordinates,
-          deviceData.inactive
+          deviceData.inactive,
+          deviceData.active,
+          deviceData.disconnected
         )
       )
     )

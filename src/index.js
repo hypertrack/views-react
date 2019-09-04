@@ -55,6 +55,7 @@ if (process.env.REACT_APP_PUBLISHABLE_KEY) {
       }}
     >
       <LiveView
+        onDeviceClick={console.log}
         navigateOnClick={false}
         publishableKey={process.env.REACT_APP_PUBLISHABLE_KEY}
         showTooltips={false}
