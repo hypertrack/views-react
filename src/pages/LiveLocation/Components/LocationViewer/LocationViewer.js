@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Query } from 'react-apollo'
 import classNames from 'classnames'
 
@@ -68,24 +68,25 @@ const LocationViewer = props => {
   const lastLocationEvents = React.useRef(
     initialiseLocationEvents(firstDeviceStatus, latestDeviceStatus)
   )
-  React.useEffect(
-    () => {
-      const currentSet = lastLocationEvents.current
-      const lastLocationEvent = currentSet[0] || {}
-      const latestLocationEvent = latestDeviceStatus.location || {}
-      if (
-        latestLocationEvent.recorded_at &&
-        dateUtils.isDateAfter(
-          latestLocationEvent.recorded_at,
-          lastLocationEvent.recorded_at
-        )
-      ) {
-        currentSet.unshift(latestLocationEvent)
-        lastLocationEvents.current = currentSet
-      }
-    },
-    [latestDeviceStatus]
-  )
+  const [showDeviceCardState, setShowDeviceCard] = useState(showDeviceCard)
+  useEffect(() => {
+    setShowDeviceCard(showDeviceCard)
+  }, [showDeviceCard])
+  React.useEffect(() => {
+    const currentSet = lastLocationEvents.current
+    const lastLocationEvent = currentSet[0] || {}
+    const latestLocationEvent = latestDeviceStatus.location || {}
+    if (
+      latestLocationEvent.recorded_at &&
+      dateUtils.isDateAfter(
+        latestLocationEvent.recorded_at,
+        lastLocationEvent.recorded_at
+      )
+    ) {
+      currentSet.unshift(latestLocationEvent)
+      lastLocationEvents.current = currentSet
+    }
+  }, [latestDeviceStatus])
   const [panToCenter, updatePanToCenter] = React.useState(false)
   const [lastInteractionTime, setLastInteractionTime] = React.useState(null)
   const [follow, setFollowFlag] = React.useState(true)
@@ -121,20 +122,17 @@ const LocationViewer = props => {
     setFollowFlag(false)
   }
 
-  React.useEffect(
-    () => {
-      // Automatically resume following if some time of inactivity passed
-      if (follow === false && lastInteractionTime != null) {
-        if (
-          Date.now() - lastInteractionTime >
-          CONSTANTS.map.inactivityTimer * 1000
-        ) {
-          setFollowFlag(true)
-        }
+  React.useEffect(() => {
+    // Automatically resume following if some time of inactivity passed
+    if (follow === false && lastInteractionTime != null) {
+      if (
+        Date.now() - lastInteractionTime >
+        CONSTANTS.map.inactivityTimer * 1000
+      ) {
+        setFollowFlag(true)
       }
-    },
-    [follow, lastInteractionTime, locationProps]
-  )
+    }
+  }, [follow, lastInteractionTime, locationProps])
 
   return (
     <Query
@@ -156,7 +154,7 @@ const LocationViewer = props => {
             <div
               className={classNames(styles.cardWrapper, {
                 [styles.isWidget]: isWidget,
-                [styles.showDeviceCard]: !showDeviceCard
+                [styles.showDeviceCard]: !showDeviceCardState
               })}
             >
               <Card
