@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import classNames from 'classnames'
 import { Icon } from './../../../Generic'
 import styles from './LayerSelector.module.scss'
@@ -14,16 +14,32 @@ const LayerSelector = ({
   const [showMenu, setShowMenu] = React.useState(false)
   const [height, setHeight] = React.useState(0)
 
+  const handleState = () => {
+    setShowMenu(false)
+    setHeight(0)
+  }
+
   const handleClick = e => {
-    if (e.target.parentElement.value) {
-      setShowMenu(false)
-      setHeight(0)
+    if (!layerSelectorEl.current.contains(e.target)) {
+      //handleOutsideClick
+      handleState()
+      return
+    } else {
+      //handleInsideClick
+      handleState()
       setSelectedMapLayer({
         type: e.target.parentElement.value,
         data: e.target.parentElement.getAttribute('data-layer')
       })
     }
   }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClick, false)
+    return () => document.removeEventListener('mousedown', handleClick, false)
+  }, [])
+
+  const layerSelectorEl = useRef(null)
 
   return (
     <div
