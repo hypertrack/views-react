@@ -104,21 +104,18 @@ const MapContainer = props => {
 
   // This effect initilizes/updates/manages accuracy halo
   const haloRef = useRef(null)
-  React.useEffect(
-    () => {
-      if (mapRef && mapRef.current && accuracy) {
-        if (haloRef && haloRef.current) haloRef.current.remove()
-        haloRef.current = Leaflet.circle(markerPosition, {
-          radius: accuracy,
-          fillColor: constants.map.colors.activeColor,
-          stroke: false
-        }).addTo(mapRef.current)
-      } else {
-        if (haloRef.current) haloRef.current.remove()
-      }
-    },
-    [accuracy, markerPosition]
-  )
+  React.useEffect(() => {
+    if (mapRef && mapRef.current && accuracy) {
+      if (haloRef && haloRef.current) haloRef.current.remove()
+      haloRef.current = Leaflet.circle(markerPosition, {
+        radius: accuracy,
+        fillColor: constants.map.colors.activeColor,
+        stroke: false
+      }).addTo(mapRef.current)
+    } else {
+      if (haloRef.current) haloRef.current.remove()
+    }
+  }, [accuracy, markerPosition])
 
   // This effect initilizes/updates/manages trail
   const trailRef = useRef(null)
@@ -131,12 +128,12 @@ const MapContainer = props => {
           html
         })
         if (trailRef && trailRef.current) trailRef.current.clearLayers()
-        const trailPoints = trail.map(trailElement =>
-          Leaflet.marker(trailElement.coordinates, { icon })
-        )
+        const trailPoints = trail.map(trailElement => {
+          return Leaflet.marker(trailElement.geometry.coordinates, { icon })
+        })
         const trailLinePoints = [
           markerPosition || center,
-          ...trail.map(trailElement => trailElement.coordinates)
+          ...trail.map(trailElement => trailElement.geometry.coordinates)
         ]
         const trailLine = Leaflet.polyline(trailLinePoints, {
           color: constants.map.colors.activeColor,

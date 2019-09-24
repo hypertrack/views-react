@@ -37,12 +37,13 @@ const LayerSelector = ({
   useEffect(() => {
     document.addEventListener('mousedown', handleClick, false)
     return () => document.removeEventListener('mousedown', handleClick, false)
-  }, [])
+  }, []) // eslint-disable-line
 
   const layerSelectorEl = useRef(null)
 
   return (
     <div
+      ref={layerSelectorEl}
       className={classNames(styles.LayerSelectorContainer, {
         [styles.active]: showMenu
       })}

@@ -20,7 +20,7 @@ function reducer(state, action) {
       return { selectedLayer: action.data, name: 'custom' }
     default:
       console.log('error')
-      return CONSTANTS.tileLayers['base']
+      return state
   }
 }
 
