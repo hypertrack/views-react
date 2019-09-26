@@ -84,7 +84,7 @@ $font-families: (
   line-height: $line-height;
 }
 
-body {
+.hypertrack-react-views-body {
   font-size: $base-font-size;
   margin: 0;
   @include setFont(n);

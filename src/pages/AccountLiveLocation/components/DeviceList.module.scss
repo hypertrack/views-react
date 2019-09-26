@@ -94,18 +94,6 @@
     }
   }
 
-  :global(.accordion_item_header) {
-    @include setFont(s, regular);
-    padding: $space $space--double;
-    display: flex;
-    align-items: center;
-    // border-top: 1px solid setColor(grey, light);
-    cursor: pointer;
-    transition: 0.4s all ease-in-out;
-    &:hover {
-      background-color: setColor(grey, light);
-    }
-  }
   .searchAndFilterContainer {
     position: relative;
     display: flex;
