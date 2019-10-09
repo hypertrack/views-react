@@ -148,13 +148,9 @@ export const listPublicMovementStatusQuery = gql`
         timezone
       }
       location {
-        accuracy
         geometry {
           coordinates
         }
-        bearing
-        speed
-        recorded_at
       }
     }
   }
