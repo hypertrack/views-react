@@ -81,7 +81,7 @@ const PUBLISHABLE_KEY = "<your_key>";
 | showTooltips     | boolean | `false` | Show the device ID right next to the location marker of a device                                                                                                                                                                                            |
 | showDeviceList   | boolean | `true`  | Show the list of all tracked devices, includes filter and search options. A click on a device will place zoom to the device location                                                                                                                        |
 | showDeviceCard   | boolean | `true`  | Show the device detail card on the single device view                                                                                                                                                                                                       |
-| selectedDeviceId | string  | `null`  | ID of the device to be displayed (case sensistive). Can be obtained using the [Device API](https://docs.hypertrack.com/#api-devices). Adding this will change the view to a single device mode (including device data, activity, and more)                  |
+| selectedDeviceId | string  | `null`  | ID of the device to be displayed (case sensistive). Can be obtained using the [Device API](https://www.hypertrack.com/docs/references/#references-apis-devices). Adding this will change the view to a single device mode (including device data, activity, and more)                  |
 | defaultLayer     | string  | `base`  | Can be either one of: [`base`](https://cloud.maptiler.com/maps/voyager/), [`street`](https://cloud.maptiler.com/maps/streets/), [`satellite`](https://cloud.maptiler.com/maps/hybrid/), or `custom`. Custom will only work if a customLayerUrl is provided. |
 | customLayerUrl   | string  | `null`  | URL to a Leaflet-compatible [tiled web map](https://en.wikipedia.org/wiki/Tiled_web_map) in XYZ format. Only raster is supported and it needs to be public accessible.                                                                                      |
 | assetsUrl        | string  | `null`  | URL to a public asset folder containig SVG files to replace default icons. The filenames need to match exactly. Missing icons will show the default versions.                                                                                               |
@@ -90,7 +90,7 @@ const PUBLISHABLE_KEY = "<your_key>";
 
 #### Showing a single device
 
-When provided with the `selectedDeviceId` property, the component will render a single device view as opposed to the device overview. You can find more details in the [Live device view documentation](https://docs.hypertrack.com/#live-device-view).
+When provided with the `selectedDeviceId` property, the component will render a single device view as opposed to the device overview.
 
 ![live device view](public/sample-single-device.png "Live Device View")
 
